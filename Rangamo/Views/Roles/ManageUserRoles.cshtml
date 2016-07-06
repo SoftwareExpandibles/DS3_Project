@@ -1,0 +1,93 @@
+﻿
+<h2>Manage User Roles</h2>
+@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
+<hr />
+@{
+    ViewBag.Title = "ManageUserRoles";
+
+}
+<h2>Role Add to User</h2>
+
+@using (Html.BeginForm("RoleAddToUser", "Roles"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        @using (var db = new Data.Models.ApplicationDbContext())
+        {
+
+            @Html.DropDownList("UserName", new SelectList(db.Users, "UserName", "UserName"), "Select UserName")
+        }
+
+        @using (var db = new Data.Models.ApplicationDbContext())
+        {
+
+            @Html.DropDownList("RoleName", new SelectList(db.Roles, "Name", "Name"), "Select Role...")
+        }
+
+    </p>
+    <div style="background-color:aqua;">
+        @ViewBag.feed
+    </div>
+    <input type="submit" value="Save" class="btn btn-success" />
+}
+<hr />
+<h3>Get Roles for a User</h3>
+@using (Html.BeginForm("GetRoles", "Roles"))
+{
+    @Html.AntiForgeryToken()
+    <p>
+        @using (var db = new Data.Models.ApplicationDbContext())
+        {
+
+            @Html.DropDownList("RoleForUser", new SelectList(db.Users, "UserName", "UserName"), "Select UserName")
+        }
+        <input type="submit" value="Get Roles for this User" class="btn btn-success" />
+    </p>
+}
+
+@if (ViewBag.RolesForThisUser != null)
+{
+    <div style="background-color:aqua;">
+        <h3>Roles for @ViewBag.user </h3>
+        <ol>
+            @foreach (string s in ViewBag.RolesForThisUser)
+            {
+                <li>@s</li>
+            }
+        </ol>
+    </div>
+}
+<div style="background-color:aqua;">
+    @ViewBag.message
+</div>
+<hr />
+<h3>Delete A User from a Role</h3>
+
+@using (Html.BeginForm("DeleteRoleForUser", "Roles"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+
+        @using (var db = new Data.Models.ApplicationDbContext())
+        {
+
+            @Html.DropDownList("deletethis", new SelectList(db.Users, "UserName", "UserName"), "Select UserName")
+        }
+        @using (var db = new Data.Models.ApplicationDbContext())
+        {
+
+            @Html.DropDownList("RoleName", new SelectList(db.Roles, "Name", "Name"), "Select Role...")
+        }
+
+    </p>
+    <div style="background-color:aqua;">
+        @ViewBag.ResultMessage
+    </div>
+
+    <input type="submit" value="Delete this user from Role" class="btn btn-danger" />
+}
+

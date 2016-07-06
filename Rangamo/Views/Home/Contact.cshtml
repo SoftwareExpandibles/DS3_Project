@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+@*<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>*@
+
+<h2 class="inquiry">Send an Inquiry:</h2>
+<span>*required field</span>
+
+<table cellpadding="0" cellspacing="0" border="0">
+
+    <tr>
+        <td><label>Contact Name*:</label></td>
+        <td><span class="wpcf7-form-control-wrap contact-name"><input type="text" name="contact-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required txtbox" id="contact-name" aria-required="true" aria-invalid="false" /></span></td>
+        <td><label>Title:</label></td>
+        <td><span class="wpcf7-form-control-wrap title"><input type="text" name="title" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox" id="title" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td><label>Company Name*:</label></td>
+        <td><span class="wpcf7-form-control-wrap company"><input type="text" name="company" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required txtbox" id="company" aria-required="true" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td><label>Street Address:</label></td>
+        <td><span class="wpcf7-form-control-wrap address"><input type="text" name="address" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox" id="address" aria-invalid="false" /></span></td>
+        <td><label>Phone*:</label></td>
+        <td><span class="wpcf7-form-control-wrap phone"><input type="text" name="phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required txtbox" id="phone" aria-required="true" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td><label>City:</label></td>
+        <td><span class="wpcf7-form-control-wrap city"><input type="text" name="city" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox" id="city" aria-invalid="false" /></span></td>
+        <td><label>Fax:</label></td>
+        <td><span class="wpcf7-form-control-wrap fax"><input type="text" name="fax" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox" id="fax" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td><label>State:</label></td>
+        <td><span class="wpcf7-form-control-wrap state"><input type="text" name="state" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox-small" id="state" aria-invalid="false" /></span></td>
+        <td><label>Email*:</label></td>
+        <td><span class="wpcf7-form-control-wrap email"><input type="email" name="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email txtbox" id="email" aria-required="true" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td><label>Zip/Post Code:</label></td>
+        <td><span class="wpcf7-form-control-wrap zip"><input type="text" name="zip" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox-small" id="zip" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td><label>Country:</label></td>
+        <td><span class="wpcf7-form-control-wrap country"><input type="text" name="country" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox" id="country" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <label>How did you hear about us?</label><br>
+            <span class="wpcf7-form-control-wrap how"><textarea name="how" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea txtarea" id="how" aria-invalid="false"></textarea></span>
+        </td>
+    </tr>
+
+    <tr> <td> &nbsp; </td> </tr>
+
+    <tr>
+        <td><label> Type of Project: </label></td>
+        <td><span class="wpcf7-form-control-wrap project_type"><select name="project_type" class="wpcf7-form-control wpcf7-select selbox" id="project_type" aria-invalid="false"><option value="">---</option><option value="Catalogs / Consumer Goods">Catalogs / Consumer Goods</option><option value="Multichannel">Multichannel</option><option value="Business to Business (B2B)">Business to Business (B2B)</option><option value="Continuity / Collectibles and Auto Ship">Continuity / Collectibles and Auto Ship</option><option value="Nutraceuticals Supplements">Nutraceuticals Supplements</option><option value="Media Companies: CD and DVD">Media Companies: CD and DVD</option><option value="Publishing and Book Fulfillment">Publishing and Book Fulfillment</option><option value="Subscription">Subscription</option><option value="Apparel">Apparel</option></select></span></td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <label> Current Project Status: </label><br />
+            <span class="wpcf7-form-control-wrap project_status"><select name="project_status" class="wpcf7-form-control wpcf7-select selbox" id="project_status" aria-invalid="false"><option value="We&#039;re a startup">We&#039;re a startup</option><option value="We&#039;ve been running this program over 6 months">We&#039;ve been running this program over 6 months</option><option value="We&#039;ve been operating this business over a year">We&#039;ve been operating this business over a year</option></select></span>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <label> Term of Program: </label><br />
+            <span class="wpcf7-form-control-wrap project_term"><select name="project_term" class="wpcf7-form-control wpcf7-select selbox" id="project_term" aria-invalid="false"><option value="Less than 6 months">Less than 6 months</option><option value="6 months to 1 year">6 months to 1 year</option><option value="1-2 years">1-2 years</option><option value="Ongoing operation">Ongoing operation</option></select></span>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <label> Monthly Order Volume Estimate: </label><br />
+            <span class="wpcf7-form-control-wrap project_estimate"><select name="project_estimate" class="wpcf7-form-control wpcf7-select selbox" id="project_estimate" aria-invalid="false"><option value="1,000-5,000">1,000-5,000</option><option value="5,001-10,000">5,001-10,000</option><option value="10,001-20,000">10,001-20,000</option><option value="20,001-30,000">20,001-30,000</option><option value="30,000 +">30,000 +</option></select></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4">
+            <span class="wpcf7-form-control-wrap structure"><span class="wpcf7-form-control wpcf7-radio radio-btn" id="structure"><span class="wpcf7-list-item first"><input type="radio" name="structure" value="B2B" />&nbsp;<span class="wpcf7-list-item-label">B2B</span></span><span class="wpcf7-list-item last"><input type="radio" name="structure" value="B2C" />&nbsp;<span class="wpcf7-list-item-label">B2C</span></span></span></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label> Number of Products:</label></td>
+        <td><span class="wpcf7-form-control-wrap number"><input type="text" name="number" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox" id="number" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td><label> Warehouse space necessary:</label></td>
+        <td><span class="wpcf7-form-control-wrap warehouse"><input type="text" name="warehouse" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox" id="warehouse" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td><label> Type of Products:</label></td>
+        <td><span class="wpcf7-form-control-wrap products"><input type="text" name="products" value="" size="40" class="wpcf7-form-control wpcf7-text txtbox" id="products" aria-invalid="false" /></span></td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <label> Brief Product Description:</label><br />
+            <span class="wpcf7-form-control-wrap description"><textarea name="description" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea txtarea" id="description" aria-invalid="false"></textarea></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <input type="hidden" name="subject" value="Contact Form Details" class="wpcf7-form-control wpcf7-hidden" id="subject">
+
+            <input name="imahuman" class="imahuman" type="hidden" value="0" />
+            <noscript>
+                <div class="row no-js-hidden-captcha">
+                    <label for="captcha">Is fire hot or cold?</label>
+                    <input name="captcha" class="hidden-captcha" type="text" />
+                </div>
+            </noscript>
+
+            <noscript>
+                <label for="captcha">Is fire hot or cold? *</label>  <span class="wpcf7-form-control-wrap captcha"><input type="text" name="captcha" value="" size="40" class="wpcf7-form-control wpcf7-text txtinput" id="captcha" aria-invalid="false" /></span>
+            </noscript>
+        </td>
+    </tr>
+
+    <tr> <td> <input type="submit" value="Send Inquiry" class="wpcf7-form-control wpcf7-submit button button--primary" id="send-inquiry" /> </td> </tr>
+
+</table>
+
+
