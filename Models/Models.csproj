@@ -114,6 +114,7 @@
     <Compile Include="Feedback.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="MailModel.cs" />
     <Compile Include="ManageViewModels.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetail.cs" />

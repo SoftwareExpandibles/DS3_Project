@@ -14,8 +14,9 @@ namespace BusinessLogic
        public MailAddress from { get; set; }
        public string sub { get; set; }
        public string body { get; set; }
-      public string ToAdmin()
-      {
+
+    public string ToAdmin()
+    {
         string feedback = "";
         EmailBusiness me = new EmailBusiness();
 
