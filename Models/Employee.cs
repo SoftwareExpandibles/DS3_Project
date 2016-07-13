@@ -58,7 +58,13 @@ namespace Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
         public string Email { get; set; }
-
+        public string FullName
+        {
+            get
+            {
+                return LastName + ", " + FirstName;
+            }
+        }
         [Required(ErrorMessage = "Contact Number Field is Empty")]
         [StringLength(10, ErrorMessage = "Invalid Contact Number", MinimumLength = 10)]
         [Display(Name = "Contact Number")]
@@ -80,7 +86,11 @@ namespace Models
         [Display(Name = "Postal Code")]
         [StringLength(4, ErrorMessage = "Invalid Postal Code")]
         public string postalCode { get; set; }
+        public int FileId { get; set; }
+        public virtual File File { get; set; }
 
 
+
+        public List<Models.File> Files { get; set; }
     }
 }

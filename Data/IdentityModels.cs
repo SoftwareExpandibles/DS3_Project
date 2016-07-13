@@ -41,6 +41,7 @@ namespace Data.Models
         public System.Data.Entity.DbSet<Supplier> Suppliers { get; set; }
         public System.Data.Entity.DbSet<Inventory> Inventories { get; set; }
         public System.Data.Entity.DbSet<Warehouse> Warehouses { get; set; }
+        public System.Data.Entity.DbSet<File> Files { get; set; }
         
     }
 }
