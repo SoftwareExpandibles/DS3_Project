@@ -1,0 +1,77 @@
+﻿@model Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h3>@Model.Title</h3>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dd>
+            <img src="@Url.Content("~/Content")/Images/@Model.Photo" width="200" height="300" class="glyphicon-picture" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre.Catagory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre.Catagory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size.ActualSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size.ActualSize)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Inventory.inventoryId)*@
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Inventory.inventoryId)*@
+        </dd>
+        
+        <dt><br /><br />
+          
+            @Html.ActionLink("Add to Cart", "Buy", "Cart", new { id = Model.ProductId }, null)
+
+        </dt>
+
+        <dd><br /><br />
+            
+            @*Html.ActionLink("Add Wishlist", "Add", "WshList", new { id = Model.productId }, null)*@
+        </dd>
+
+    </dl>
+</div>

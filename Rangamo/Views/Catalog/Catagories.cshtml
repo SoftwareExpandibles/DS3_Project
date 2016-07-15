@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Models.Genre>
+
+@{
+    ViewBag.Title = "Catagories";
+}
+
+<h2>Catagories</h2>
+<ul>
+
+
+    @foreach (var genre in Model)
+    {
+        
+     <li>@Html.ActionLink(genre.Catagory, "Search", new { genre = genre.Catagory})</li>
+
+    
+    }
+</ul>
+
+

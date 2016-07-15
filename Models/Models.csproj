@@ -108,6 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Delivery.cs" />
     <Compile Include="Employee.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="FileType.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="MailModel.cs" />
     <Compile Include="ManageViewModels.cs" />
     <Compile Include="Order.cs" />

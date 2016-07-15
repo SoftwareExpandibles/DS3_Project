@@ -38,5 +38,6 @@ namespace Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Creation Date")]
         public DateTime Created { get; set; }
+        public ICollection<Cart> Cart { get; set; }
     }
 }
