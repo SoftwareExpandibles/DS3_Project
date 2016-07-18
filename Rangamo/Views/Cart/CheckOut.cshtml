@@ -1,0 +1,89 @@
+﻿@using WebApplication2.Models;
+@model WebApplication2.Models.DeliveryOption
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<h2>Order checkout</h2>
+
+@if (Session["order"] != null)
+{
+    Order ac = (Order)Session["order"];
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <td><h5>User Name :</h5></td>
+            <td>@ac.UserName</td>
+        </tr>
+        <tr>
+            <td><h5>Order Number :</h5></td>
+            <td>@ac.OrderId</td>
+        </tr>
+        <tr>
+            <td><h5>Order Date :</h5></td>
+            <td>@ac.OrderDate.Date</td>
+        </tr>
+        <tr>
+            <td><h5>Sub Total :</h5></td>
+            <td>R @ac.Total</td>
+        </tr>
+        @if (Session["orderDetails"] != null)
+        {
+            OrderDetail od = (OrderDetail)Session["orderDetails"];
+
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+            </tr>
+            foreach (var item in od.Items)
+            {
+                <tr>
+                    <td>@item.Product.Title</td>
+                    <td>@item.Quantity</td>
+                    <td>R @item.Product.Price</td>
+                </tr>
+            }
+
+        }
+
+    </table>
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>DeliveryOption</h4>
+            <hr />
+
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PickUpDate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PickUpDate)
+                    @Html.ValidationMessageFor(model => model.PickUpDate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    Tick if you want the clothes delivered to you @Html.EditorFor(model => model.Status)
+                    @Html.ValidationMessageFor(model => model.Status)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+@if (Session["order"] == null)
+{
+    <p><h1 style="color:red">Session Has Timed Due To Internet Problems Please Check He Internet Connection</h1></p>
+}
