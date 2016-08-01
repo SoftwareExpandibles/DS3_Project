@@ -18,6 +18,7 @@ namespace Models
         [StringLength(160, MinimumLength = 2)]
         public string Title { get; set; }
         public string Photo { get; set; }
+        public byte[] img { get; set; }
         [Required]
         [Range(0.01, 4000.00)]
 

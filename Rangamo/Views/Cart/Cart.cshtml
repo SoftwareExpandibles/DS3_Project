@@ -49,15 +49,15 @@
             {
                 s += (Convert.ToDouble(item.Product.Price)) * (Convert.ToDouble(item.Quantity));
                 <tr>
-                    <td>@Html.ActionLink("Remove Item", "Delete", "Cart", new { id = item.Product.productId }, null)</td>
+                    <td>@Html.ActionLink("Remove Item", "Delete", "Cart", new { id = item.Product.ProductId }, null)</td>
                     <td>@item.ItemId</td>
                     <td>@item.Product.Title</td>
                     <td>@item.Product.Color</td>
                     <td>@item.Product.Size.ActualSize</td>
                     <td>
-                        <img src="@Url.Content("~/Content")/Images/@item.Product.Photo"
+                        <img src="@Url.Content("~/Content")/images/@item.Product.Photo"
                              width="120" height="100" class="glyphicon-picture" />
-                        <input type="hidden" class="productId" value="@item.Product.productId" />
+                        <input type="hidden" class="ProductId" value="@item.Product.ProductId" />
                     </td>
                     <td>R @item.Product.Price</td>
                     <td>@item.Quantity</td>

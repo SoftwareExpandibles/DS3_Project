@@ -39,7 +39,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="iTextSharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <HintPath>..\packages\iTextSharp-LGPL.4.1.6\lib\iTextSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RazorPDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -173,6 +181,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
+    <Compile Include="Controllers\DesignerController.cs" />
     <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
@@ -182,6 +191,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SizesController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -392,6 +402,38 @@
     <Content Include="Content\css\etalage.css" />
     <Content Include="Content\css\megamenu.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\designer\css\bootstrap.css" />
+    <Content Include="Content\designer\css\dataTables.bootstrap.css" />
+    <Content Include="Content\designer\css\font-awesome.css" />
+    <Content Include="Content\designer\css\font-awesome.min.css" />
+    <Content Include="Content\designer\css\main-style.css" />
+    <Content Include="Content\designer\css\morris-0.4.3.min.css" />
+    <Content Include="Content\designer\css\pace-theme-big-counter.css" />
+    <Content Include="Content\designer\css\social-buttons.css" />
+    <Content Include="Content\designer\css\style.css" />
+    <Content Include="Content\designer\css\timeline.css" />
+    <Content Include="Content\designer\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\designer\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\designer\img\logo.png" />
+    <Content Include="Content\designer\img\user.jpg" />
+    <Content Include="Content\designer\js\bootstrap.js" />
+    <Content Include="Content\designer\js\bootstrap.min.js" />
+    <Content Include="Content\designer\js\dashboard-demo.js" />
+    <Content Include="Content\designer\js\dataTables.bootstrap.js" />
+    <Content Include="Content\designer\js\excanvas.min.js" />
+    <Content Include="Content\designer\js\flot-demo.js" />
+    <Content Include="Content\designer\js\jquery-1.10.2.js" />
+    <Content Include="Content\designer\js\jquery.dataTables.js" />
+    <Content Include="Content\designer\js\jquery.flot.js" />
+    <Content Include="Content\designer\js\jquery.flot.pie.js" />
+    <Content Include="Content\designer\js\jquery.flot.resize.js" />
+    <Content Include="Content\designer\js\jquery.flot.tooltip.min.js" />
+    <Content Include="Content\designer\js\jquery.metisMenu.js" />
+    <Content Include="Content\designer\js\morris-demo.js" />
+    <Content Include="Content\designer\js\morris.js" />
+    <Content Include="Content\designer\js\pace.js" />
+    <Content Include="Content\designer\js\raphael-2.1.0.min.js" />
+    <Content Include="Content\designer\js\siminta.js" />
     <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\10.jpg" />
     <Content Include="Content\images\11.jpg" />
@@ -415,6 +457,7 @@
     <Content Include="Content\images\d2.jpg" />
     <Content Include="Content\images\d3.jpg" />
     <Content Include="Content\images\d4.jpg" />
+    <Content Include="Content\images\dress.jpg" />
     <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\gift.jpg" />
     <Content Include="Content\images\img-sprite.png" />
@@ -474,6 +517,13 @@
     <Content Include="Content\assets\fonts\FontAwesome.otf" />
     <Content Include="Content\assets\fonts\Montserrat-Regular.ttf" />
     <Content Include="Content\assets\fonts\Muli-Regular.ttf" />
+    <Content Include="Content\designer\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\designer\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\designer\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\designer\fonts\FontAwesome.otf" />
+    <Content Include="Content\designer\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\designer\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\designer\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -558,6 +608,9 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_EmployeesLayout.cshtml" />
+    <Content Include="Views\Shared\_DesignerLayout.cshtml" />
+    <Content Include="Views\Designer\Index.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,7 +26,7 @@ namespace Rangamo.Controllers
         // GET: Products
         public ActionResult Index()
         {
-           // var products = db.Products.Include(p => p.Genre).Include(p => p.Size);
+            // var products = db.Products.Include(p => p.Genre).Include(p => p.Size);
             var product = _rangamoRepository.GetAllProducts();
             return View(product.ToList());
         }
@@ -64,21 +64,14 @@ namespace Rangamo.Controllers
             if (file != null)
             {
                 string ImgName = System.IO.Path.GetFileName(file.FileName);
-                string physicalPath = Server.MapPath("~/Content/Images/" + ImgName);
+                string physicalPath = Server.MapPath("~/Content/images/" + ImgName);
                 file.SaveAs(physicalPath);
                 product.Photo = ImgName;
-                //int a = db.Inventory.Count();
-                //int b = a + 1;
-                //Inventory inv = new Inventory();
-                //inv.inventoryId = b;
-                //inv.StockOnHand = 25;
-                //inv.ReOrderQuantity = 5;
-                //db.Inventory.Add(inv);
-                //db.SaveChanges();
-                //product.inventoryId = b;
-                try //(ModelState.IsValid)
+
+                try
                 {
-                   _rangamoRepository.CreateProduct(product);
+
+                    _rangamoRepository.CreateProduct(product);
                     _rangamoRepository.Save();
                     return RedirectToAction("Index");
                 }
@@ -88,13 +81,27 @@ namespace Rangamo.Controllers
                     return View(product);
                 }
             }
-            ViewBag.genreId = new SelectList(_rangamoRepository.GetAllGenres(), "genreId", "Category", product.genreId);
-           
-            ViewBag.sizeId = new SelectList(_rangamoRepository.GetAllSizes(), "sizeId", "ActualSize", product.sizeId);
+
+            //if (ModelState.IsValid)
+            //{
+            //    int fileLength = file.ContentLength;
+            //    Byte[] array = new Byte[fileLength];
+            //    file.InputStream.Read(array, 0, fileLength);
+            //    product.Photo = array;
+
+                ViewBag.genreId = new SelectList(_rangamoRepository.GetAllGenres(), "genreId", "Catagory",
+                    product.genreId);
+                ViewBag.sizeId = new SelectList(_rangamoRepository.GetAllSizes(), "sizeId", "ActualSize", product.sizeId);
+
+                //_rangamoRepository.CreateProduct(product);
+                //_rangamoRepository.Save();
+                //return RedirectToAction("Index");
+            
+
             return View(product);
+
+
         }
-
-
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -151,7 +158,7 @@ namespace Rangamo.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
-           _rangamoRepository.DeleteProduct(id);
+            _rangamoRepository.DeleteProduct(id);
             _rangamoRepository.Save();
             return RedirectToAction("Index");
         }

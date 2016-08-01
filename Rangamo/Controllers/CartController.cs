@@ -9,6 +9,8 @@ using  Data;
 using Data.Models;
 using Models;
 using  Services;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Rangamo.Controllers
 {
@@ -26,7 +28,7 @@ namespace Rangamo.Controllers
         public ActionResult Index()
         {
             var product = _rangamoRepository.GetAllProducts();
-            return View(product.ToList());
+            return new RazorPDF.PdfResult(product,"Index");
         }
         private int isExisting(int id)
         {

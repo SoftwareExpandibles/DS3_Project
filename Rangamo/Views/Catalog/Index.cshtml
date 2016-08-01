@@ -72,7 +72,7 @@
                 <div class="single-products">
                     <div class="productinfo text-center">
                         <a href="@Url.Action("Details", "Catalog", new { id = product.ProductId })">
-                            <img src="@Url.Content("~/Content")/Images/@product.Photo" width="200" height="300" class="glyphicon-picture" alt="Product" />
+                            <img src="@Url.Content("~/Content")/images/@product.Photo" width="200" height="300" class="glyphicon-picture" alt="Product" />
                         </a>
                         <h2><strong>@product.Title</strong></h2>
                         <p>@product.Price.ToString("R0.00")</p>

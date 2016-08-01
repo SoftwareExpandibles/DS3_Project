@@ -1,5 +1,4 @@
-﻿
-using Data;
+﻿using Data;
 using Data.Models;
 using Models;
 using System;

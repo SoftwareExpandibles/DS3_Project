@@ -55,11 +55,6 @@ namespace Data
         void DeleteWarehouse(int id);
         void UpdateWarehouse(Warehouse warehouse);
 
-     
-
-       
-
-        
         void Save();
     }
 }
