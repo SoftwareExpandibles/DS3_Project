@@ -79,6 +79,36 @@ namespace Data
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [Display(Name="Fisrt Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name="Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name="Contact Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [DataType(DataType.MultilineText)]
+        [Display(Name="Residential Address")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name="Province")]
+        public string Province { get; set; }
+
+        [Required]
+        [Display(Name="City")]
+        public string City { get; set; }
+
+        [Required]
+        [DataType(DataType.PostalCode)]
+        [Display(Name="Postal Code")]
+        public string postal { get; set; }
     }
 
     public class ResetPasswordViewModel
