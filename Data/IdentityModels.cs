@@ -53,7 +53,8 @@ namespace Data.Models
         public System.Data.Entity.DbSet<Warehouse> Warehouses { get; set; }
         public System.Data.Entity.DbSet<File> Files { get; set; }
         public System.Data.Entity.DbSet<messages> messages { get; set; }
-        //public System.Data.Entity.DbSet<Sms> Sms { get; set; }
+        public System.Data.Entity.DbSet<Job> Jobs { get; set; }
+        public System.Data.Entity.DbSet<Application> Applications { get; set; }
 
 
         public System.Collections.IEnumerable Sms { get; set; }

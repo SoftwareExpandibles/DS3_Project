@@ -17,7 +17,5 @@ namespace Models
         public string Catagory { get; set; }
         public ICollection<Product> Produt { get; set; }
 
-
-        public int genreId { get; set; }
     }
 }

@@ -118,6 +118,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Delivery.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Genre.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="Job.cs" />
     <Compile Include="MailModel.cs" />
     <Compile Include="ManageViewModels.cs" />
     <Compile Include="messages.cs" />

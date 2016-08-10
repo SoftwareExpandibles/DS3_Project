@@ -1,21 +1,80 @@
-﻿@{
-    ViewBag.Title = "Create";
+﻿
+<div id="content" class="span10">
 
-}
-<h2>Create Role</h2>
-@Html.ActionLink("List Roles", "Index") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
-<hr />
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @{
+        ViewBag.Title = "Create";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
 
-    <div>
-        Role name
+
+    <!-- start: Content -->
+
+
+
+    <ul class="breadcrumb">
+        <li>
+            <i class=""></i>
+            <a href='@Url.Action("Index", "Admin")'>Home</a>
+            <i class=""></i>
+        </li>
+        <li>
+            >>>>
+            <a href="#">Roles</a>
+        </li>
+    </ul>
+
+
+
+
+    <div class="row-fluid sortable">
+        <div class="box span11">
+            <div class="box-header" data-original-title>
+                <h2><i class="halflings-icon edit"></i><span class="break"></span>Create New Role</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
+                    <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                    <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form class="form-horizontal">
+                    <fieldset>
+
+
+                        @Html.ActionLink("List Roles", "Index") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
+                        <hr />
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <div>
+                                Role name
+                            </div>
+                            <p>
+                                @Html.TextBox("RoleName") @ViewBag.ResultMessage
+                            </p>
+                            <input type="submit" value="Save" class="btn btn-success" />
+                        }
+
+
+
+
+                    </fieldset>
+                </form>
+
+            </div>
+        </div>
+
     </div>
-    <p>
-        @Html.TextBox("RoleName") @ViewBag.ResultMessage
-    </p>
-    <input type="submit" value="Save" class="btn btn-default" />
-}
+
+    <!-- end: Content -->
+
+</div>
+
+
+
+
+
+
 
