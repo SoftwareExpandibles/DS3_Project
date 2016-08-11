@@ -83,8 +83,8 @@ namespace Models
 
         [Required(ErrorMessage = "Designation Field is Empty")]
         [Display(Name = "Designation")]
-        public int jodID { get; set; }
-        public virtual Job Job { get; set; }
+        public int jobID { get; set; }
+        public virtual Job Jobs { get; set; }
 
         [Display(Name = "Reference Number")]
         public string AppRefNumber { get; set; }

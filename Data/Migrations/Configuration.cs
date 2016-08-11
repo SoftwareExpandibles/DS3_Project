@@ -16,8 +16,6 @@ namespace Data.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-     
-
         private bool AddUserAndRole(Data.Models.ApplicationDbContext context)
         {
             var rm = new RoleManager<IdentityRole>

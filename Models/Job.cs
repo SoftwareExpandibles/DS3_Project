@@ -39,6 +39,6 @@ namespace Models
         [Display(Name = "Closing Date")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime closingDate { get; set; }
-        public List<Application> Applications { get; set; }
+        public List<Applicant> Applicants { get; set; }
     }
 }

@@ -118,7 +118,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
+    <Compile Include="Applicant.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Delivery.cs" />
