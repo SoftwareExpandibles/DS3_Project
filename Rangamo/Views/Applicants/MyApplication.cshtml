@@ -5,12 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MyApplication</h2>
+@*<h2>Application Feedback</h2>*@
 
+<div class="col-lg-4">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            Application Summary
+        </div>
+        <div class="panel-body">
+            <form>
 
+            </form>
+        </div>
+        <div class="panel-footer">
+            Panel Footer
+        </div>
+    </div>
+</div>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Jobs.jobTitle)
         </th>
         <th>
@@ -60,22 +74,22 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.cv)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.AppRefNumber)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ApplicationDate)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.dob)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Jobs.jobTitle)
         </td>
         <td>
@@ -125,7 +139,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.cv)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.AppRefNumber)
         </td>
