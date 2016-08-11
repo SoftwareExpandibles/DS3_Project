@@ -15,9 +15,5 @@ namespace Models
 
         [Required(ErrorMessage = "Catagory Field is Empty")]
         public string Catagory { get; set; }
-        public ICollection<Product> Produt { get; set; }
-
-
-        public int genreId { get; set; }
     }
 }

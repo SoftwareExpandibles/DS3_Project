@@ -17,8 +17,9 @@ namespace Models
         [Required]
         [StringLength(160, MinimumLength = 2)]
         public string Title { get; set; }
-        public string Photo { get; set; }
-        public byte[] img { get; set; }
+        public int SupplierID { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public byte[] Photo { get; set; }
         [Required]
         [Range(0.01, 4000.00)]
 
@@ -26,7 +27,7 @@ namespace Models
         public decimal Price { get; set; }
         [Display(Name = "Genre")]
         [ForeignKey("Genre")]
-        public int genreId { get; set; }
+        public int genreID { get; set; }
         public virtual Genre Genre { get; set; }
         public string Color { get; set; }
         [Display(Name = "Size")]
@@ -39,6 +40,5 @@ namespace Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Creation Date")]
         public DateTime Created { get; set; }
-        public ICollection<Cart> Cart { get; set; }
     }
 }
