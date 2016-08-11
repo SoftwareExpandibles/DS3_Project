@@ -84,8 +84,8 @@ namespace Rangamo.Controllers
             try
             {
                 HttpPostedFileBase file = Request.Files["ImageData"];
-                //var logic = new PhotoSettings();
-                //product.Photo = logic.ConvertToBytes(file);
+                var logic = new PhotoSettings();
+                product.Photo = logic.ConvertToBytes(file);
                 if (ModelState.IsValid)
                 {
                     _rangamoRepository.CreateProduct(product);

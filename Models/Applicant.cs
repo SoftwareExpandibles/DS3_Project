@@ -95,7 +95,6 @@ namespace Models
 
         [Display(Name = "Date of Birth")]
         public string dob { get; set; }
-
-        public int userID { get; set; }  
+ 
     }
 }

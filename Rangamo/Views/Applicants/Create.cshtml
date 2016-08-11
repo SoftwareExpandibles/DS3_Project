@@ -5,184 +5,211 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Applicant</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-  
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Title, new List<SelectListItem>
-                {
-                  new SelectListItem {Text = "Mr", Value = "Mr"},
-                  new SelectListItem {Text = "Mrs", Value = "Mrs"},
-                  new SelectListItem {Text = "Miss", Value = "Miss"}
-                }, "---Select Title---", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="special">
+        <div class="container">
+            <h3 style="background-color:lightgray">Application</h3>
+            <div class="main">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="registration">
+                    <div class="registration_left">
+                        <h2>Personal Details</h2>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdNo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IdNo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IdNo, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
-                {
-                  new SelectListItem {Text = "African", Value = "African"},
-                  new SelectListItem {Text = "Coloured", Value = "Coloured"},
-                  new SelectListItem {Text = "Indian", Value = "Indian"},
-                  new SelectListItem {Text = "White", Value = "White"}
-                }, "---Select Ethnicity---", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="registration_form">
+                            <!-- Form -->
+                            <form id="registration_form" action='@Url.Action("Create", "Applicants")' method="post">
+                                @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                <div>
+                                    <label>
+                                        @Html.DropDownListFor(model => model.Title, new List<SelectListItem>
+                                    {
+                                      new SelectListItem {Text = "Mr", Value = "Mr"},
+                                      new SelectListItem {Text = "Mrs", Value = "Mrs"},
+                                      new SelectListItem {Text = "Miss", Value = "Miss"}
+                                    }, "---Select Title---", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "First Name" })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.LastName, new { @placeholder = "Last Name" })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.IdNo, new { @placeholder = "ID Number" })
+                                        @Html.ValidationMessageFor(model => model.IdNo, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+                                    {
+                                      new SelectListItem {Text = "African", Value = "African"},
+                                      new SelectListItem {Text = "Coloured", Value = "Coloured"},
+                                      new SelectListItem {Text = "Indian", Value = "Indian"},
+                                      new SelectListItem {Text = "White", Value = "White"}
+                                    }, "---Select Ethnicity---", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                    </label>
+                                </div><br />
+                                <h2>Contact Details</h2>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email" })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.cell, new { @placeholder = "Contact Number" })
+                                        @Html.ValidationMessageFor(model => model.cell, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.Address, new { @placeholder = "Street Address" })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.DropDownListFor(model => model.Province, new List<SelectListItem>
+                                     {
+                                         new SelectListItem {Text = "KwaZulu-Natal", Value = "KwaZulu-Natal"},
+                                         new SelectListItem {Text = "Gauteng", Value = "Gauteng"},
+                                         new SelectListItem {Text = "Mpumalanga", Value = "Mpumalanga"},
+                                         new SelectListItem {Text = "Limpompo", Value = "Limpompo"},
+                                         new SelectListItem {Text = "Eastern Cape", Value = "Eastern Cape"},
+                                         new SelectListItem {Text = "Northen Cape", Value = "Northen Cape"},
+                                         new SelectListItem {Text = "North West", Value = "North West"},
+                                         new SelectListItem {Text = "Free State", Value = "Free State"},
+                                         new SelectListItem {Text = "Western Cape", Value = "Western Cape"}
+                                    }, "---Select Your Povince---", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.City, new { @placeholder = "City/Towm" })
+                                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.zip, new { @placeholder = "Zip/Postal Code" })
+                                        @Html.ValidationMessageFor(model => model.zip, "", new { @class = "text-danger" })
+                                    </label>
+                                </div><br />
+                                <h2>Educational Details</h2>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.institution, new { @placeholder = "Tertial Institution" })
+                                        @Html.ValidationMessageFor(model => model.institution, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.qualification, new { @placeholder = "Qualification Obtained" })
+                                        @Html.ValidationMessageFor(model => model.qualification, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.year, new { @placeholder = "Graduation Year" })
+                                        @Html.ValidationMessageFor(model => model.year, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        Select Designation
+                                        @Html.DropDownList("jobID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.jobID, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <textarea rows="10" cols="100" class="form-control" name="cv" placeholder="Motivation Letter"></textarea>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cell, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cell, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cell, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                        @Html.ValidationMessageFor(model => model.cv, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="submit" value="SUBMIT" class="btn btn-primary" />
+                                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            </form>
+                            <!-- /Form -->
+                        </div>
+                    </div>
+                    <div class="registration_left">
+                        <h2>Educational Details</h2>
+                        <div class="registration_form">
+                            <!-- Form -->
+                            <form id="registration_form" action='@Url.Action("Create", "Applicants")' method="post">
+                                @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Province, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Province, new List<SelectListItem>
-                {
-                 new SelectListItem {Text = "KwaZulu-Natal", Value = "KwaZulu-Natal"},
-                 new SelectListItem {Text = "Gauteng", Value = "Gauteng"},
-                 new SelectListItem {Text = "Mpumalanga", Value = "Mpumalanga"},
-                 new SelectListItem {Text = "Limpompo", Value = "Limpompo"},
-                 new SelectListItem {Text = "Eastern Cape", Value = "Eastern Cape"},
-                 new SelectListItem {Text = "Northen Cape", Value = "Northen Cape"},
-                 new SelectListItem {Text = "North West", Value = "North West"},
-                 new SelectListItem {Text = "Free State", Value = "Free State"},
-                 new SelectListItem {Text = "Western Cape", Value = "Western Cape"}
-                }, "---Select Your Povince---", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                @*<div>
+                                        <label>
+                                           @Html.TextBoxFor(x => x.institution, new { @placeholder = "Tertial Institution" })
+                                            @Html.ValidationMessageFor(model => model.institution, "", new { @class = "text-danger" })
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            @Html.TextBoxFor(x => x.qualification, new { @placeholder = "Qualification Obtained" })
+                                            @Html.ValidationMessageFor(model => model.qualification, "", new { @class = "text-danger" })
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            @Html.TextBoxFor(x => x.year, new { @placeholder = "Graduation Year" })
+                                            @Html.ValidationMessageFor(model => model.year, "", new { @class = "text-danger" })
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Select Designation
+                                            @Html.DropDownList("jobID", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.jobID, "", new { @class = "text-danger" })
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <textarea rows="10" cols="100" class="form-control" name="cv" placeholder="Motivation Letter"></textarea>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                            @Html.ValidationMessageFor(model => model.cv, "", new { @class = "text-danger" })
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="SUBMIT" class="btn btn-primary" />
+                                    </div>*@
+                            </form>
+                            <!-- /Form -->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.zip, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.zip, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.zip, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- end  -->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.institution, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.institution, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.institution, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.qualification, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.qualification, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.qualification, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.year, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.year, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.year, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.cv, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cv, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cv, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.jobID, "Select Job", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("jobID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.jobID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </div>
     </div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 
-
-
-@*<div class="container">
-    <div class="main">
-       
-    </div>
-</div>*@
