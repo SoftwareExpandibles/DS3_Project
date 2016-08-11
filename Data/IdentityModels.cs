@@ -5,7 +5,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Data.Models;
 using Data;
-using Models; 
+using Models;
+using Rangamo.Models; 
 
 namespace Data.Models
 {
@@ -19,6 +20,15 @@ namespace Data.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public string Province { get; set; }
+        public string City { get; set; }
+        public string postal { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -42,6 +52,9 @@ namespace Data.Models
         public System.Data.Entity.DbSet<Inventory> Inventories { get; set; }
         public System.Data.Entity.DbSet<Warehouse> Warehouses { get; set; }
         public System.Data.Entity.DbSet<File> Files { get; set; }
-        
+        public System.Data.Entity.DbSet<messages> messages { get; set; }
+        public System.Data.Entity.DbSet<Job> Jobs { get; set; }
+        public System.Data.Entity.DbSet<Applicant> Applicants { get; set; }
+        public System.Collections.IEnumerable Sms { get; set; }
     }
 }

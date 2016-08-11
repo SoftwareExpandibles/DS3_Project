@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Models.Job>
+
+<div class="container">
+    <div class="main">
+
+        @helper Truncate(string input, int length)
+{
+    if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+        @{
+            //ViewBag.Title = "Index";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+
+        <h2 class="text-center">Careers</h2>
+        <p class="text-left">Available Careers: @Model.Count() </p>
+
+
+        @using (Html.BeginForm())
+        {
+            <p>
+                Job Title: @Html.TextBox("title")
+                <input type="submit" value="Search" class="btn-success" /><br /><br /><br />
+            </p>
+        }
+
+
+        <table class="table" style="background-color:azure">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobRequirements)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.closingDate)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                        <a href="@Url.Action("Details", "Careers", new { id = item.jobID })"><span>@item.jobCode</span></a>
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jobTitle)
+                    </td>
+                    <td>
+                        @Truncate(item.jobDescription, 25)
+                        @*@Html.DisplayFor(modelItem => item.jobDescription)*@
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.jobRequirements)*@
+                        @Truncate(item.jobRequirements, 25)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jobType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.closingDate)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

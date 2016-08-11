@@ -115,10 +115,6 @@
     <Compile Include="AccountViewModels.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="IRangamoRepository.cs" />
-    <Compile Include="Migrations\201607270742546_ggysghsdf.cs" />
-    <Compile Include="Migrations\201607270742546_ggysghsdf.Designer.cs">
-      <DependentUpon>201607270742546_ggysghsdf.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,11 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607270742546_ggysghsdf.resx">
-      <DependentUpon>201607270742546_ggysghsdf.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

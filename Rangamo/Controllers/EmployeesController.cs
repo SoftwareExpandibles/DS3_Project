@@ -49,7 +49,7 @@ namespace Rangamo.Controllers
         public ActionResult Create()
         {
 
-            ViewBag.FileId = new SelectList(db.Files, "FileId", "FileName");
+            ViewBag.FileId = new SelectList(db.Sms, "FileId", "FileName");
             return View();
         }
 
@@ -97,7 +97,7 @@ namespace Rangamo.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FileId = new SelectList(db.Files, "FileId", "FileName", employee.FileId);
+            ViewBag.FileId = new SelectList(db.Sms, "FileId", "FileName", employee.FileId);
             return View(employee);
         }
 
