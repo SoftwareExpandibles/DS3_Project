@@ -20,7 +20,7 @@ namespace Services
        //Products
        public IEnumerable<Product> GetAllProducts()
        {
-           var products = _context.Products.Include(p => p.Genre).Include(p => p.Size);
+           var products = _context.Products.Include(p => p.Genre).Include(p => p.Size).Include(p => p.Supplier);
            return (IEnumerable<Product>) products;
        }
        public Product ReadProduct(int id)
@@ -172,7 +172,7 @@ namespace Services
        //Supplier
        public IEnumerable<Supplier> GetSuppliers()
        {
-           var supplier = _context.Suppliers.Include(i => i.Product);
+           var supplier = _context.Suppliers;
            return (IEnumerable<Supplier>)_context.Suppliers.ToList();
        }
 
@@ -226,7 +226,7 @@ namespace Services
 
        public void Dispose()
        {
-           throw new NotImplementedException();
+            _context.Dispose();
        }
 
 

@@ -39,8 +39,7 @@ namespace Models
         [Display(Name = "Postal Code")]
         [StringLength(4, ErrorMessage = "Invalid Postal Code")]
         public string postalCode { get; set; }
-        public int ProductId { get; set; }
-        public virtual Product Product { get; set; }
+
 
         
     }

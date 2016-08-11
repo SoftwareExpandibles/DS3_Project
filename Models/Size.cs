@@ -13,6 +13,5 @@ namespace Models
         [Key]
         public int sizeId { get; set; }
         public string ActualSize { get; set; }
-        public virtual ICollection<Product> Product { get; set; }
     }
 }

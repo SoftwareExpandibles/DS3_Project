@@ -13,22 +13,16 @@ namespace Models
         [Key]
         public int OrderID { get; set; }
         public string Username { get; set; }
-        public System.DateTime OrderDate { get; set; }
-
-        [Display(Name="Delivery")]
-        public int DeliveryID { get; set; }
+        public DateTime OrderDate { get; set; }
+        public string OrderTitle { get; set; }
+        public List<Item> CartItems { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal AdditionalCost { get; set; }
+        public decimal Vat { get; set; }
         public decimal Total { get; set; }
-
-        [Display(Name ="Transaction")]
-        public int TransactionID { get; set; }
-
-        [Display(Name = "Order Status")]
-        public int OrderStatusID { get; set; }
-        public virtual OrderStatus OrderStatuses { get; set; }
-        public virtual Transaction Transactions { get; set; }
-        public virtual Delivery Deliveries { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
-        
-
+        public Order()
+        {
+            CartItems = new List<Item>();
+        }
     }
 }

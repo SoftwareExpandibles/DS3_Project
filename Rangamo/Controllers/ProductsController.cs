@@ -6,11 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Data;
 using Data.Models;
 using Models;
+using Data;
 using Services;
-using EntityState = System.Data.EntityState;
 
 namespace Rangamo.Controllers
 {
@@ -18,7 +17,6 @@ namespace Rangamo.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private IRangamoRepository _rangamoRepository;
-        // GET: Products
         public ProductsController()
         {
             this._rangamoRepository = new RangamoRepository(new ApplicationDbContext());
@@ -26,11 +24,32 @@ namespace Rangamo.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            // var products = db.Products.Include(p => p.Genre).Include(p => p.Size);
-            var product = _rangamoRepository.GetAllProducts();
-            return View(product.ToList());
+            var products = _rangamoRepository.GetAllProducts();
+            //var products = db.Products.Include(p => p.Genre).Include(p => p.Size).Include(p => p.Supplier);
+            return View(products.ToList());
+        }
+        //Retrieve Image from Database
+        public byte[] GetImageFromDataBase(int id)
+        {
+            byte[] cover;
+            var repo = db.Products.ToList();
+            var q = from temp in repo where temp.ProductId == id select temp.Photo;
+            cover = q.First();
+            return cover;
         }
 
+        public ActionResult RetrieveImage(int id)
+        {
+            byte[] cover = GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
@@ -49,8 +68,9 @@ namespace Rangamo.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.genreId = new SelectList(db.Genres, "genreID", "Catagory");
+            ViewBag.genreID = new SelectList(db.Genres, "genreID", "Catagory");
             ViewBag.sizeId = new SelectList(db.Sizes, "sizeId", "ActualSize");
+            ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierName");
             return View();
         }
 
@@ -59,49 +79,32 @@ namespace Rangamo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "ProductId,Title,SupplierID,Photo,Price,genreID,Color,sizeId,Created")] Product product)
         {
-            if (file != null)
+            try
             {
-                string ImgName = System.IO.Path.GetFileName(file.FileName);
-                string physicalPath = Server.MapPath("~/Content/images/" + ImgName);
-                file.SaveAs(physicalPath);
-                product.Photo = ImgName;
-
-                try
+                HttpPostedFileBase file = Request.Files["ImageData"];
+                var logic = new PhotoSettings();
+                product.Photo = logic.ConvertToBytes(file);
+                if (ModelState.IsValid)
                 {
-
                     _rangamoRepository.CreateProduct(product);
                     _rangamoRepository.Save();
+                    //db.Products.Add(product);
+                    //db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (Exception e)
-                {
-                    ViewBag.err = "error " + e.Message;
-                    return View(product);
-                }
             }
-
-            //if (ModelState.IsValid)
-            //{
-            //    int fileLength = file.ContentLength;
-            //    Byte[] array = new Byte[fileLength];
-            //    file.InputStream.Read(array, 0, fileLength);
-            //    product.Photo = array;
-
-                ViewBag.genreId = new SelectList(_rangamoRepository.GetAllGenres(), "genreId", "Catagory",
-                    product.genreId);
-                ViewBag.sizeId = new SelectList(_rangamoRepository.GetAllSizes(), "sizeId", "ActualSize", product.sizeId);
-
-                //_rangamoRepository.CreateProduct(product);
-                //_rangamoRepository.Save();
-                //return RedirectToAction("Index");
-            
-
+            catch
+            {
+                return View(product);
+            }
+            ViewBag.genreID = new SelectList(db.Genres, "genreID", "Catagory", product.genreID);
+            ViewBag.sizeId = new SelectList(db.Sizes, "sizeId", "ActualSize", product.sizeId);
+            ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierName", product.SupplierID);
             return View(product);
-
-
         }
+
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -114,8 +117,9 @@ namespace Rangamo.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.genreId = new SelectList(db.Genres, "genreID", "Catagory", product.genreId);
+            ViewBag.genreID = new SelectList(db.Genres, "genreID", "Catagory", product.genreID);
             ViewBag.sizeId = new SelectList(db.Sizes, "sizeId", "ActualSize", product.sizeId);
+            ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierName", product.SupplierID);
             return View(product);
         }
 
@@ -124,16 +128,19 @@ namespace Rangamo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Title,Photo,Price,genreId,Color,sizeId,Created")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,Title,SupplierID,Photo,Price,genreID,Color,sizeId,Created")] Product product)
         {
             if (ModelState.IsValid)
             {
                 _rangamoRepository.UpdateProduct(product);
                 _rangamoRepository.Save();
+                //db.Entry(product).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.genreId = new SelectList(db.Genres, "genreID", "Catagory", product.genreId);
+            ViewBag.genreID = new SelectList(db.Genres, "genreID", "Catagory", product.genreID);
             ViewBag.sizeId = new SelectList(db.Sizes, "sizeId", "ActualSize", product.sizeId);
+            ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierName", product.SupplierID);
             return View(product);
         }
 
@@ -160,6 +167,8 @@ namespace Rangamo.Controllers
             Product product = db.Products.Find(id);
             _rangamoRepository.DeleteProduct(id);
             _rangamoRepository.Save();
+            //db.Products.Remove(product);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -167,7 +176,8 @@ namespace Rangamo.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _rangamoRepository.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }
