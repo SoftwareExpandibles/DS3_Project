@@ -13,7 +13,7 @@ using Microsoft.Owin.Security;
 using Data;
 using Microsoft.AspNet.Identity.Owin;
 using Data.Models;
-using Rangamo.Models;
+using Models;
 
 
 namespace Rangamo.Controllers
