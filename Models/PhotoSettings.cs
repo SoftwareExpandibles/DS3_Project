@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Models
 {
-  public  class PhotoSettings
+   public class PhotoSettings
     {
         public byte[] ConvertToBytes(HttpPostedFileBase image)
         {
