@@ -1,160 +1,46 @@
 ﻿@model IEnumerable<Models.Applicant>
 
-@{
-    ViewBag.Title = "MyApplication";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+<div class="special">
+    <div class="container">
+        @{
+            ViewBag.Title = "MyApplication";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
 
-@*<h2>Application Feedback</h2>*@
 
-<div class="col-lg-4">
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            Application Summary
+
+
+        <div class="special">
+            <div class="container">
+                <h3 style="background-color:lightgray">Feedback</h3>
+                <div class="specia-top">
+
+                    <div class="col-lg-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading; text-center" style="background-color:lightgray">
+                                <h2>Your Application Has Been Successfully Submited</h2>
+                            </div>
+                            <div class="panel-body">
+                                @foreach (var item in Model)
+                                {
+                                    <form>
+                                        <p>Hi   @Html.DisplayFor(modelItem => item.FirstName)</p><br />
+                                        <p>Your Application Reference Number is : @Html.DisplayFor(modelItem => item.AppRefNumber)</p>
+                                    </form>
+                                }
+                            </div>
+                            <div class="panel-footer; text-center" style="background-color:lightgreen">
+                                If You Don't Hear from us within 30 Days Consider your Application Unsuccessful!!!
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div class="panel-body">
-            <form>
-                
-            </form>
-        </div>
-        <div class="panel-footer">
-            Panel Footer
-        </div>
+        <p> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <button onclick="location.href='@Url.Action("Index", "Home")';return false;">Back to Home</button></p>
+
+
     </div>
-</div>
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Jobs.jobTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cell)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Province)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.zip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.institution)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.qualification)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.year)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cv)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.AppRefNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationDate)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.dob)
-        </th>*@
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Jobs.jobTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cell)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Province)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.zip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.institution)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.qualification)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cv)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.AppRefNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dob)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicantID }) |
-        
-        </td>
-    </tr>
-}
-
-</table>
+</div><br /><br /><br /> 
 

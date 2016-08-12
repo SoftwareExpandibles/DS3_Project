@@ -3,93 +3,114 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-        </div>
-    </div>
   
-    <div class="form-group">
-        @Html.LabelFor(m => m.Province, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Province, new List<SelectListItem>
-            {
-                new SelectListItem{ Text = "Mpumalanga", Value="Mpumalanga"},
-                new SelectListItem{ Text = "Gauteng", Value="Gauteng"},
-                new SelectListItem{ Text = "KwaZulu Natal", Value="KwaZulu Natal"},
-                new SelectListItem{ Text = "Northern Cape", Value="Northern Cape"},
-                new SelectListItem{ Text = "Eastern Cape", Value="Eastern Cape"},
-                new SelectListItem{ Text = "Free State", Value="Free State"},
-                new SelectListItem{ Text = "Limpmpo", Value="Limpompo"},
-                new SelectListItem{ Text = "Western Cape", Value="Western Cape"}
-            }, "Select Province", new { @class = "form-control" })
+   
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+  
+    <div class="special">
+        <div class="container">
+            @*<h3 style="background-color:lightgray">Registration</h3>*@
+            <div class="main">
 
-            @Html.ValidationMessageFor(m =>m.Province)
+                <div class="registration">
+                    <div class="registration_left">
+                        <h2>new user? <span> create an account </span></h2>
+
+                        <div class="registration_form">
+                            <!-- Form -->
+                            <form id="registration_form" action='@Url.Action("Register", "Account")' method="post">
+
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                       @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First name" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                     @Html.TextBoxFor(m => m.PhoneNumber, new { @placeholder = "Contact Number" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(m => m.Address, new { @placeholder = "Street Address" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.DropDownListFor(m => m.Province, new List<SelectListItem>
+                                        {
+                                          new SelectListItem{ Text = "Mpumalanga", Value="Mpumalanga"},
+                                          new SelectListItem{ Text = "Gauteng", Value="Gauteng"},
+                                          new SelectListItem{ Text = "KwaZulu Natal", Value="KwaZulu Natal"},
+                                          new SelectListItem{ Text = "Northern Cape", Value="Northern Cape"},
+                                          new SelectListItem{ Text = "Eastern Cape", Value="Eastern Cape"},
+                                          new SelectListItem{ Text = "Free State", Value="Free State"},
+                                          new SelectListItem{ Text = "Limpmpo", Value="Limpompo"},
+                                          new SelectListItem{ Text = "Western Cape", Value="Western Cape"}
+                                        }, "Select Province", new { @class = "form-control" })
+                                    </label>
+                                </div>
+
+                                @*<div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.Address, new { @placeholder = "Street Address" })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>*@
+                                
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.City, new { @placeholder = "City/Towm" }) 
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.TextBoxFor(x => x.postal, new { @placeholder = "Zip/Postal Code" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.PasswordFor(m => m.Password, new { @placeholder = "Password" })
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Password" })
+                                    </label>
+                                </div><br />
+                                <div>
+                                    <input type="submit" value="SUBMIT" class="btn btn-primary" />
+                                </div>
+                                
+                            </form>
+                            <!-- /Form -->
+                        </div>
+                    </div>
+                  
+                    <div class="clearfix"></div>
+                </div>
+                <!-- end  -->
+
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.postal, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.postal, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Register" />
-            </div>
-        </div>
-        }
+    </div>
+
+
+}
 
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")

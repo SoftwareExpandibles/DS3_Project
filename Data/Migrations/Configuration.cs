@@ -14,6 +14,7 @@ namespace Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         private bool AddUserAndRole(Data.Models.ApplicationDbContext context)
