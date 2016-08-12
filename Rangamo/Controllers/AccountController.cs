@@ -14,7 +14,7 @@ using Data;
 using Microsoft.AspNet.Identity.Owin;
 using Data.Models;
 using Models;
-
+using Rangamo.Models;
 
 namespace Rangamo.Controllers
 {

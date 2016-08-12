@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Models.Supplier>
+﻿@using Models
+@model IEnumerable<Models.Supplier>
 
 @{
     ViewBag.Title = "Index";
@@ -29,6 +30,7 @@
         <th>
             @Html.DisplayNameFor(model => model.postalCode)
         </th>
+        <th>Supplier Products</th>
         <th></th>
     </tr>
 
@@ -52,7 +54,22 @@
         <td>
             @Html.DisplayFor(modelItem => item.postalCode)
         </td>
+        @if ((List<Product>)Session["Tester"] != null)
+        {
+            List<Product> amp = (List<Product>)Session["Tester"];
+            <td>
+                <ul>
+                    @foreach (var vitem in amp)
+                    {
+                        if (vitem.SupplierID == item.SupplierID)
+                        {
+                            <li style="shape-rendering:auto">@vitem.Title &nbsp;&nbsp;&nbsp;&nbsp; <img src="/Products/RetrieveImage/@vitem.ProductId" alt="" height=150 width=150 class="thumbnail" /> &nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("ReOrder", "Order", new { id = vitem.ProductId })</li>
+                        }
+                    }
+                </ul>
+            </td>                    }
         <td>
+<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SupplierID }) |
             @Html.ActionLink("Details", "Details", new { id=item.SupplierID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.SupplierID })

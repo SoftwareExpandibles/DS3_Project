@@ -224,7 +224,130 @@ namespace Services
            _context.Entry(warehouse).State = EntityState.Modified;
        }
 
-       public void Dispose()
+        //ReOrderRequest
+        public IEnumerable<ReOrderRequest> GetAllReOrders()
+        {
+            return (IEnumerable<ReOrderRequest>)_context.ReOrderRequests.ToList();
+        }
+
+        public ReOrderRequest ReadReOrder(int id)
+        {
+            return (ReOrderRequest)_context.ReOrderRequests.Find(id);
+        }
+
+        public void CreateReOrder(ReOrderRequest reOrder)
+        {
+            _context.ReOrderRequests.Add(reOrder);
+        }
+
+        public void DeleteReOrder(int id)
+        {
+            var reOrder = _context.ReOrderRequests.ToList().Find(c => c.ReOrderId == id);
+            _context.ReOrderRequests.Remove(reOrder);
+        }
+
+        public void UpdateReOrder(ReOrderRequest reOrder)
+        {
+            _context.Entry(reOrder).State = EntityState.Modified;
+        }
+        //Order
+        public IEnumerable<Order> GetAllOrders()
+        {
+            return (IEnumerable<Order>)_context.Orders.ToList();
+        }
+
+        public Order ReadOrder(int id)
+        {
+            return (Order)_context.Orders.Find(id);
+        }
+
+        public void CreateOrder(Order order)
+        {
+            _context.Orders.Add(order);
+        }
+
+        public void DeleteOrder(int id)
+        {
+            var order = _context.Orders.ToList().Find(c => c.OrderID == id);
+            _context.Orders.Remove(order);
+        }
+
+        public void UpdateOrder(Order order)
+        {
+            _context.Entry(order).State = EntityState.Modified;
+        }
+        //DailyReOrderCounters
+        public IEnumerable<DailyReOrderCounters> GetAllDailyReOrderCounters()
+        {
+            return (IEnumerable<DailyReOrderCounters>)_context.DailyReOrderCounter.ToList();
+        }
+
+
+        public void CreateDailyReOrderCounters(DailyReOrderCounters drc)
+        {
+            _context.DailyReOrderCounter.Add(drc);
+        }
+
+
+        public void UpdateDailyReOrderCounters(DailyReOrderCounters drc)
+        {
+            _context.Entry(drc).State = EntityState.Modified;
+        }
+
+        //DailyOrderCounters
+        public IEnumerable<DailyOrderCounters> GetAllDailyOrderCounters()
+        {
+            return (IEnumerable<DailyOrderCounters>)_context.DailyOrderCounter.ToList();
+        }
+
+
+        public void CreateDailyOrderCounters(DailyOrderCounters drc)
+        {
+            _context.DailyOrderCounter.Add(drc);
+        }
+
+
+        public void UpdateDailyOrderCounters(DailyOrderCounters drc)
+        {
+            _context.Entry(drc).State = EntityState.Modified;
+        }
+
+        //MonthlyReOrderCounters
+        public IEnumerable<MonthlyReOrderCounters> GetAllMonthlyReOrderCounters()
+        {
+            return (IEnumerable<MonthlyReOrderCounters>)_context.MonthlyReOrderCounter.ToList();
+        }
+
+
+        public void CreateMonthlyReOrderCounters(MonthlyReOrderCounters drc)
+        {
+            _context.MonthlyReOrderCounter.Add(drc);
+        }
+
+
+        public void UpdateMonthlyReOrderCounters(MonthlyReOrderCounters drc)
+        {
+            _context.Entry(drc).State = EntityState.Modified;
+        }
+
+        //MonthlyOrderCounters
+        public IEnumerable<MonthlyOrderCounters> GetAllMonthlyOrderCounters()
+        {
+            return (IEnumerable<MonthlyOrderCounters>)_context.MonthlyOrderCounter.ToList();
+        }
+
+
+        public void CreateMonthlyOrderCounters(MonthlyOrderCounters drc)
+        {
+            _context.MonthlyOrderCounter.Add(drc);
+        }
+
+
+        public void UpdateMonthlyOrderCounters(MonthlyOrderCounters drc)
+        {
+            _context.Entry(drc).State = EntityState.Modified;
+        }
+        public void Dispose()
        {
             _context.Dispose();
        }
