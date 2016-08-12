@@ -7,10 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace BusinessLogic
 {
-    class CatalogHead
+   public class CatalogHead
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private IRangamoRepository _rangamoRepository;
@@ -35,29 +36,21 @@ namespace BusinessLogic
             }
             return ap;
         }
-        public List<ReOrderRequest> AcceptedReStocks()
+        public List<MonthlyReOrderCounters> AcceptedReStocks()
         {
-            List<ReOrderRequest> ror = new List<ReOrderRequest>();
-            foreach (ReOrderRequest item in _rangamoRepository.GetAllReOrders().ToList())
-            {
-                if (item.Approval==true)
-                {
-                    ror.Add(item);
-                }
-            }
-            return ror;
+            return _rangamoRepository.GetAllMonthlyReOrderCounters().ToList();
         }
-        public List<Order> ProcessedOrders()
+        public List<DailyOrderCounters> ProcessedOrders()
         {
-            return _rangamoRepository.GetAllOrders().ToList();
+            return _rangamoRepository.GetAllDailyOrderCounters().ToList();
         }
-        public List<ReOrderRequest> RequestedRestock()
+        public List<DailyReOrderCounters> RequestedRestock()
         {
-            return _rangamoRepository.GetAllReOrders().ToList();
+            return _rangamoRepository.GetAllDailyReOrderCounters().ToList();
         }
-        public List<Order> RequestedOrders()
+        public List<MonthlyOrderCounters> RequestedOrders()
         {
-            return _rangamoRepository.GetAllOrders().ToList();
+            return _rangamoRepository.GetAllMonthlyOrderCounters().ToList();
         }
 
     }

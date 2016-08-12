@@ -645,6 +645,10 @@
     <Content Include="Views\Applicants\MyApplication.cshtml" />
     <Content Include="Views\Applicants\Create.cshtml" />
     <Content Include="Views\Cashier\Index.cshtml" />
+    <Content Include="Views\Home\AcceptedRestock.cshtml" />
+    <Content Include="Views\Home\ProcessedOrders.cshtml" />
+    <Content Include="Views\Home\MonthlyReOrders.cshtml" />
+    <Content Include="Views\Home\MonthlyOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

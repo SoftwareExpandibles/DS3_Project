@@ -8,11 +8,13 @@ using Data.Models;
 using Data;
 using Services;
 using EntityState = System.Data.EntityState;
+using BusinessLogic;
 
 namespace Rangamo.Controllers
 {
     public class HomeController : Controller
     {
+        readonly CatalogHead ch = new CatalogHead();
         private ApplicationDbContext db = new ApplicationDbContext();
         private IRangamoRepository _rangamoRepository;
         // GET: Products
@@ -37,6 +39,26 @@ namespace Rangamo.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult AcceptedRestock()
+        {
+            ViewBag.View=ch.AcceptedReStocks();
+            return View();
+        }
+        public ActionResult ProcessedOrders()
+        {
+            ViewBag.View = ch.ProcessedOrders();
+            return View();
+        }
+        public ActionResult MonthlyReOrders()
+        {
+            ViewBag.View = ch.RequestedOrders();
+            return View();
+        }
+        public ActionResult MonthlyOrders()
+        {
+            ViewBag.View = ch.RequestedRestock();
             return View();
         }
     }

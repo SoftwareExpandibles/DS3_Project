@@ -16,6 +16,7 @@ namespace Models
         public bool New { get; set; }
         public bool Hold { get; set; }
         public bool Delivered { get; set; }
+        public bool Paid { get; set; }
         public bool Closed { get; set; }
         public List<Order> Orders { get; set; }
     }
