@@ -61,6 +61,7 @@ namespace Data.Models
         public DbSet<DailyOrderCounters> DailyOrderCounter { get; set; }
         public DbSet<MonthlyOrderCounters> MonthlyOrderCounter { get; set; }
         public DbSet<MonthlyReOrderCounters> MonthlyReOrderCounter { get; set; }
+        public DbSet<OrderStatus> OrderStatus { get; set; }
         public System.Collections.IEnumerable Sms { get; set; }
     }
 }

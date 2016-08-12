@@ -68,7 +68,6 @@ namespace Data
         void UpdateOrder(Order order);
 
         IEnumerable<DailyReOrderCounters> GetAllDailyReOrderCounters();
-        DailyReOrderCounters ReadDailyReOrderCounters(int id);
         void CreateDailyReOrderCounters(DailyReOrderCounters drc);
         void UpdateDailyReOrderCounters(DailyReOrderCounters drc);
 

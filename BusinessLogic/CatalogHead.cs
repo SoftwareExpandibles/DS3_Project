@@ -37,7 +37,15 @@ namespace BusinessLogic
         }
         public List<ReOrderRequest> AcceptedReStocks()
         {
-            return _rangamoRepository.GetAllReOrders().ToList();
+            List<ReOrderRequest> ror = new List<ReOrderRequest>();
+            foreach (ReOrderRequest item in _rangamoRepository.GetAllReOrders().ToList())
+            {
+                if (item.Approval==true)
+                {
+                    ror.Add(item);
+                }
+            }
+            return ror;
         }
         public List<Order> ProcessedOrders()
         {
