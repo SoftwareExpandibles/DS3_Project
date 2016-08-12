@@ -38,7 +38,7 @@ namespace Rangamo.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -48,12 +48,11 @@ namespace Rangamo.Controllers
         {
             get
             {
-                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-                //return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
         //
@@ -184,10 +183,10 @@ namespace Rangamo.Controllers
                     
                      //For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                      //Send an email with this link
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    _networking.SendEmailConfirmation(model.Email, callbackUrl);
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //_networking.SendEmailConfirmation(model.Email, callbackUrl);
 
                     Sms sms = new Sms();
                     // var sms = new Smscan();
@@ -199,7 +198,7 @@ namespace Rangamo.Controllers
                     try
                     {
 
-                        sms.Send_SMS(user.PhoneNumber, "Hi " + user.FirstName + " Welcome to Rangamo Online Shopping. You can use your" + user.Email + " to login and more information. " + "Thank you for creating an account with us. Ts&Cs apply.");
+                       // sms.Send_SMS(user.PhoneNumber, "Hi " + user.FirstName + " Welcome to Rangamo Online Shopping. You can use your" + user.Email + " to login and more information. " + "Thank you for creating an account with us. Ts&Cs apply.");
                     }
                     catch
                     {

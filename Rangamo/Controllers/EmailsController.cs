@@ -30,6 +30,10 @@ namespace Rangamo.Controllers
             me.ToAdmin();
             return RedirectToAction("EmailUs");
         }
+        public ActionResult Sent()
+        {
+            return View();
+        }
 
     }
 }

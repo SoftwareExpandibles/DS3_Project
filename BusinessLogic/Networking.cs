@@ -30,7 +30,7 @@ namespace BusinessLogic
                 var mail = new MailAddress("21229090@dut4life.ac.za", "Rangamo Customer");
 
                 WebMail.SmtpServer = "mfd.dut.ac.za";
-                WebMail.SmtpPort = 25;
+                WebMail.SmtpPort = 443;
                 WebMail.UserName = "21229090@dut4life.ac.za";
                 WebMail.Password = "Dut940418";
                 WebMail.From = mail.ToString();
@@ -65,10 +65,10 @@ namespace BusinessLogic
                 string toFor = email;
                 const string subjectFor = "Reset Password";
 
-                var mail = new MailAddress("21229090@dut4life.ac.za", "Customer Membership");
+                var mail = new MailAddress("21229090@dut4life.ac.za", "Customer Account");
 
                 WebMail.SmtpServer = "mfd.dut.ac.za";
-                WebMail.SmtpPort = 25;
+                WebMail.SmtpPort = 443;
                 WebMail.UserName = "21229090@dut4life.ac.za";
                 WebMail.Password = "Dut940418";
                 WebMail.From = mail.ToString();
