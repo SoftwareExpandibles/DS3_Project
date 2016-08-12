@@ -55,6 +55,7 @@ namespace Data.Models
         public System.Data.Entity.DbSet<messages> messages { get; set; }
         public System.Data.Entity.DbSet<Job> Jobs { get; set; }
         public System.Data.Entity.DbSet<Applicant> Applicants { get; set; }
+        public System.Data.Entity.DbSet<Rating> Rating { get; set; }
         public System.Collections.IEnumerable Sms { get; set; }
     }
 }

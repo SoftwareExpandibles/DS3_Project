@@ -41,12 +41,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.jobTitle)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.jobDescription)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.jobRequirements)
-                </th>
+               
                 <th>
                     @Html.DisplayNameFor(model => model.jobType)
                 </th>
@@ -67,14 +62,14 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.jobTitle)
                     </td>
-                    <td>
+                    @*<td>
                         @Truncate(item.jobDescription, 25)
-                        @*@Html.DisplayFor(modelItem => item.jobDescription)*@
+                       
                     </td>
                     <td>
-                        @*@Html.DisplayFor(modelItem => item.jobRequirements)*@
+                       
                         @Truncate(item.jobRequirements, 25)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.jobType)
                     </td>
@@ -85,6 +80,10 @@
             }
 
         </table>
+
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
 
     </div>
 </div>

@@ -138,6 +138,7 @@
     <Compile Include="OrderStatus.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rating.cs" />
     <Compile Include="Shipper.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="Sms.cs" />
