@@ -55,6 +55,34 @@ namespace Data
         void DeleteWarehouse(int id);
         void UpdateWarehouse(Warehouse warehouse);
 
+        IEnumerable<ReOrderRequest> GetAllReOrders();
+        ReOrderRequest ReadReOrder(int id);
+        void CreateReOrder(ReOrderRequest reOrder);
+        void DeleteReOrder(int id);
+        void UpdateReOrder(ReOrderRequest reOrder);
+
+        IEnumerable<Order> GetAllOrders();
+        Order ReadOrder(int id);
+        void CreateOrder(Order order);
+        void DeleteOrder(int id);
+        void UpdateOrder(Order order);
+
+        IEnumerable<DailyReOrderCounters> GetAllDailyReOrderCounters();
+        void CreateDailyReOrderCounters(DailyReOrderCounters drc);
+        void UpdateDailyReOrderCounters(DailyReOrderCounters drc);
+
+        IEnumerable<DailyOrderCounters> GetAllDailyOrderCounters();
+        void CreateDailyOrderCounters(DailyOrderCounters drc);
+        void UpdateDailyOrderCounters(DailyOrderCounters drc);
+
+        IEnumerable<MonthlyReOrderCounters> GetAllMonthlyReOrderCounters();
+        void CreateMonthlyReOrderCounters(MonthlyReOrderCounters drc);
+        void UpdateMonthlyReOrderCounters(MonthlyReOrderCounters drc);
+
+        IEnumerable<MonthlyOrderCounters> GetAllMonthlyOrderCounters();
+        void CreateMonthlyOrderCounters(MonthlyOrderCounters drc);
+        void UpdateMonthlyOrderCounters(MonthlyOrderCounters drc);
+
         void Save();
     }
 }

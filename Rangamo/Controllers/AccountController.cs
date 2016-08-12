@@ -13,6 +13,7 @@ using Microsoft.Owin.Security;
 using Data;
 using Microsoft.AspNet.Identity.Owin;
 using Data.Models;
+using Models;
 using Rangamo.Models;
 
 
@@ -37,7 +38,7 @@ namespace Rangamo.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -49,9 +50,9 @@ namespace Rangamo.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
         //
@@ -163,14 +164,25 @@ namespace Rangamo.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName,LastName=model.LastName,PhoneNumber=model.PhoneNumber,Address=model.Address,Province=model.Province,City=model.City,postal=model.postal };
+                var user = new ApplicationUser 
+                { 
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    FirstName=model.FirstName,
+                    LastName=model.LastName,
+                    PhoneNumber=model.PhoneNumber,
+                    Address=model.Address,
+                    Province=model.Province,
+                    City=model.City,
+                    postal=model.postal 
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
+                     //For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                     //Send an email with this link
                     //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
@@ -185,12 +197,8 @@ namespace Rangamo.Controllers
 
                     try
                     {
-                        //sms.Send_SMS(model.Phone,
-                        //    "Congratulations" + " " + model.FirstName + " " + model.LastName + " ID No:" + model.IdNumber +
-                        //    " " + " Number of Guest : " + " " + model.NumGuests + "your booking was sucessful" + " " +
-                        //    "to McDonald Lodge ");
 
-                        sms.Send_SMS(user.PhoneNumber, "Hi " + user.FirstName + " Welcome to Rangamo Online Shopping. You can use your" + user.Email + " to login and more information. " + "Thank you for creating an account with us. Ts&Cs apply.");
+                       // sms.Send_SMS(user.PhoneNumber, "Hi " + user.FirstName + " Welcome to Rangamo Online Shopping. You can use your" + user.Email + " to login and more information. " + "Thank you for creating an account with us. Ts&Cs apply.");
                     }
                     catch
                     {

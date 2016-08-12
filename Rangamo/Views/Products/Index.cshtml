@@ -18,6 +18,9 @@
             @Html.DisplayNameFor(model => model.Size.ActualSize)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Supplier.SupplierName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
@@ -44,10 +47,13 @@
             @Html.DisplayFor(modelItem => item.Size.ActualSize)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Photo)
+            <img src="/Products/RetrieveImage/@item.ProductId" alt="" height=150 width=150 class="thumbnail" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)

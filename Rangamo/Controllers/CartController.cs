@@ -75,7 +75,31 @@ namespace Rangamo.Controllers
             Session["cart"] = cart;
             return View("cart");
         }
-
+        public ActionResult CheckOut()
+        {
+            Order ooo = new Order();
+            List<Item> cart = (List<Item>)Session["Cart"];
+            if (cart != null)
+            {
+                foreach (Item cad in cart)
+                {
+                    ooo.SubTotal += (cad.Quantity * cad.Product.Price);
+                }
+            }
+            ooo.OrderID = _rangamoRepository.GetAllOrders().Count() + 1;
+            ooo.CartItems = cart;
+            ooo.Username=
+            ooo.OrderTitle = "Order" + ooo.OrderID.ToString();
+            ooo.AdditionalCost = 0;
+            ooo.Vat = (ooo.SubTotal+ooo.AdditionalCost) * Convert.ToDecimal(0.14);
+            ooo.Total = ooo.SubTotal + ooo.Vat;
+            _rangamoRepository.CreateOrder(ooo);
+            _rangamoRepository.Save();
+            //db.Orders.Add(ooo);
+            //db.SaveChanges();
+            Session["Order"] = ooo;
+            return View("CheckOut1");
+        }
         private int BisExisting(int id)
         {
             List<Item> cart = (List<Item>)Session["cart"];
@@ -84,7 +108,25 @@ namespace Rangamo.Controllers
                     return i;
             return -1;
         }
-
+        //public ActionResult Successful()
+        //{
+        //    int syaOrders = 0;
+        //    foreach (Order orders in _rangamoRepository.GetAllOrders())
+        //    {
+        //        if (orders.OrderTitle.Contains("Sya"))
+        //        {
+        //            syaOrders += 1;
+        //        }
+        //    }
+        //    ViewBag.LatestOrder = _rangamoRepository.GetAllOrders().ToString().Contains("Sya" + syaOrders.ToString());
+        //    return View();
+        //    if(ViewBag.LatestOrder!=null)
+        //    {
+        //        OrderStatus ac = new OrderStatus();
+        //        Order thisOrder = ViewBag.LatestOrder;
+        //        ac.OrderID = thisOrder.OrderID;
+        //    }
+        //}
         //public ActionResult Shipping()
         //{
 

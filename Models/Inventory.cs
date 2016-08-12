@@ -15,6 +15,7 @@ namespace Models
         [Display(Name = "Product")]
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
+        public decimal UnitPrice { get; set; }
         public int StockOnHand { get; set; }
         public int ReOrderQuantity { get; set; }
     }

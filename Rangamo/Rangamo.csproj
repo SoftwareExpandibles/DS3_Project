@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -187,8 +188,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ApplicantsController.cs" />
     <Compile Include="Controllers\CareersController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CashierController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\DesignerController.cs" />
     <Compile Include="Controllers\EmailsController.cs" />
@@ -200,10 +203,10 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SizesController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -470,9 +473,7 @@
     <Content Include="Content\images\d3.jpg" />
     <Content Include="Content\images\d4.jpg" />
     <Content Include="Content\images\dress.jpg" />
-    <Content Include="Content\images\EmptyStar.jpg" />
     <Content Include="Content\images\facebook.png" />
-    <Content Include="Content\images\FilledStar.jpeg" />
     <Content Include="Content\images\gift.jpg" />
     <Content Include="Content\images\img-sprite.png" />
     <Content Include="Content\images\line.png" />
@@ -482,7 +483,6 @@
     <Content Include="Content\images\right_arrow.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\soc_icons.png" />
-    <Content Include="Content\images\star_half_full.png" />
     <Content Include="Content\images\s_icon1.png" />
     <Content Include="Content\images\s_icon2.png" />
     <Content Include="Content\images\s_icon3.png" />
@@ -634,7 +634,17 @@
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Careers\Index.cshtml" />
     <Content Include="Views\Careers\Details.cshtml" />
-    <Content Include="Views\Rating\Index.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Details.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\Applicants\Index.cshtml" />
+    <Content Include="Views\Applicants\Details.cshtml" />
+    <Content Include="Views\Applicants\Delete.cshtml" />
+    <Content Include="Views\Applicants\MyApplication.cshtml" />
+    <Content Include="Views\Applicants\Create.cshtml" />
+    <Content Include="Views\Cashier\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

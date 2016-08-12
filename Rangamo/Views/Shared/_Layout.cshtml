@@ -162,7 +162,7 @@
                     <li><a href="register.html">Register</a></li>
                     <li><a href="#">My Cart</a></li>
                     <li><a href="#">Order History</a></li>
-                    <li><a href="buy.html">Payment</a></li>
+                    <li><a href='@Url.Action("MyApplication", "Applicants")'>My Application</a></li>
                 </div>
                 <div class="col-md-5 our-st">
                     <div class="our-left">
@@ -181,22 +181,11 @@
         <div class="foot-top">
             <div class="container">
                 <div class="col-md-6 s-c">
-                    <li>
-                        <div class="fooll">
-
-                        </div>
-                    </li>
+                    
                     <li>
                         <div class="social-ic">
-                            <ul>
-                                <li><a href="#"><i class="facebok"> </i></a></li>
-                                <li><a href="#"><i class="twiter"> </i></a></li>
-                                <li><a href="#"><i class="goog"> </i></a></li>
-                                <li><a href="#"><i class="be"> </i></a></li>
-                                <li><a href="#"><i class="pp"> </i></a></li>
-
-                            </ul><br />
-                            <p>Copyrights &copy; @DateTime.Now.Year - Rangamo Couture | Software Expendables</p>
+                          
+                            <p>Copyrights &copy; @DateTime.Now.Year - Rangamo Couture</p>
                         </div>
                     </li>
 
@@ -204,9 +193,9 @@
             </div>
         </div>
     </div>
-    <div>
+  <div>
 
-    </div>
+</div>
 
 
     @RenderSection("scripts", required: false)

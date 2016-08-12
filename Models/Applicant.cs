@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Models
 {
     public class Applicant
@@ -94,5 +95,6 @@ namespace Models
 
         [Display(Name = "Date of Birth")]
         public string dob { get; set; }
+ 
     }
 }

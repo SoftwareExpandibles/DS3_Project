@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_StaffLayout.cshtml";
+}
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("New Sale", "Index")
+</p>
+
+<html>
+<body>
+    @using (Html.BeginForm("Index", "Product"))
+    {
+
+
+        @Html.TextBox("id")
+
+        @Html.AntiForgeryToken()
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>
+            </div>
+
+        }
+
+
+        <table class="table">
+            <tr>
+                <th>
+                   Product Id
+                </th>
+               
+                <th>
+                    DEscription
+                </th>
+                <th>
+                    Price
+                </th>
+                <th></th>
+            </tr>
+
+        
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductId)
+                    </td>
+                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                  
+                </tr>
+
+
+            }
+
+        </table>
+
+     
+
+
+
+        <table class="table">
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <th>
+                    Total
+                </th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+                <th>@Html.Label(" R" + Session["Total"].ToString())</th>
+
+            </tr>
+
+
+            <tr>
+                <th>
+                    Cash
+
+                </th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+                <th>@Html.TextBox("cash")</th>
+            </tr>
+            <tr>
+                <th>
+                    Change
+                </th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>@Html.Label(" R") @ViewBag.Change</th>
+                <td></td>
+            </tr>
+
+        </table>
+
+        @ViewBag.Error1
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Process" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</body>
+</html>
+

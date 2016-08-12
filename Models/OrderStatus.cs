@@ -11,7 +11,8 @@ namespace Models
     {
         [Key]
         public int OrderStutasID { get; set; }
-
+        public int OrderID { get; set; }
+        public virtual Order Order { get; set; }
         public bool New { get; set; }
         public bool Hold { get; set; }
         public bool Delivered { get; set; }

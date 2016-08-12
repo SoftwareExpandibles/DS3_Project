@@ -1,0 +1,80 @@
+﻿@using Models
+@model IEnumerable<Models.Supplier>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SupplierName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.postalCode)
+        </th>
+        <th>Supplier Products</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupplierName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.postalCode)
+        </td>
+        @if ((List<Product>)Session["Tester"] != null)
+        {
+            List<Product> amp = (List<Product>)Session["Tester"];
+            <td>
+                <ul>
+                    @foreach (var vitem in amp)
+                    {
+                        if (vitem.SupplierID == item.SupplierID)
+                        {
+                            <li style="shape-rendering:auto">@vitem.Title &nbsp;&nbsp;&nbsp;&nbsp; <img src="/Products/RetrieveImage/@vitem.ProductId" alt="" height=150 width=150 class="thumbnail" /> &nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("ReOrder", "Order", new { id = vitem.ProductId })</li>
+                        }
+                    }
+                </ul>
+            </td>                    }
+        <td>
+<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SupplierID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SupplierID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SupplierID })
+        </td>
+    </tr>
+}
+
+</table>
