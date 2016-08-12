@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Models.ReOrderRequest>
+
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2>Order</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Inventory.InventoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReOrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReOrderTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approval)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inventory.InventoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReOrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReOrderTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Approval)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReOrderId })
+        </td>
+    </tr>
+}
+
+</table>
