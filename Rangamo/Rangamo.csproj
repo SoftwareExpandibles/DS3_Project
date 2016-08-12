@@ -191,6 +191,7 @@
     <Compile Include="Controllers\ApplicantsController.cs" />
     <Compile Include="Controllers\CareersController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CashierController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\DesignerController.cs" />
     <Compile Include="Controllers\EmailsController.cs" />
@@ -643,6 +644,7 @@
     <Content Include="Views\Applicants\Delete.cshtml" />
     <Content Include="Views\Applicants\MyApplication.cshtml" />
     <Content Include="Views\Applicants\Create.cshtml" />
+    <Content Include="Views\Cashier\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -35,8 +35,8 @@ namespace BusinessLogic
 
         SmtpClient smtp = new SmtpClient
         {
-            Host = "pod51014.outlook.com",
-            Port = 587,
+            Host = "mfd.dut.ac.za",
+            Port = 443,
             Credentials = new NetworkCredential("21229090@dut4life.ac.za", "Dut940418"),
             EnableSsl = true
         };
