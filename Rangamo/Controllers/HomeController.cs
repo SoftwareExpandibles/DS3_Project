@@ -42,22 +42,22 @@ namespace Rangamo.Controllers
         }
         public ActionResult AcceptedRestock()
         {
-            ViewBag.View = _rangamoRepository.GetAllDailyReOrderCounters();
+            ViewBag.View = _rangamoRepository.GetAllDailyReOrderCounters().ToList();
             return View();
         }
         public ActionResult ProcessedOrders()
         {
-            ViewBag.View = _rangamoRepository.GetAllDailyOrderCounters();
+            ViewBag.View = _rangamoRepository.GetAllDailyOrderCounters().ToList();
             return View();
         }
         public ActionResult MonthlyReOrders()
         {
-            ViewBag.View = _rangamoRepository.GetAllMonthlyReOrderCounters();
+            ViewBag.View = _rangamoRepository.GetAllMonthlyReOrderCounters().ToList();
             return View();
         }
         public ActionResult MonthlyOrders()
         {
-            ViewBag.View = _rangamoRepository.GetAllMonthlyOrderCounters();
+            ViewBag.View = _rangamoRepository.GetAllMonthlyOrderCounters().ToList();
             return View();
         }
     }
