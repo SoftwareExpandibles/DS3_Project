@@ -1,0 +1,18 @@
+﻿@using Models
+@{
+    var myList = ViewBag.View;
+    var db = myList;
+    var data = db;
+    List<string> days = new List<string>();
+    List<string> orders = new List<string>();
+    foreach (MonthlyReOrderCounters item in db)
+    {
+        days.Add(item.MonthlyRecord.ToString());
+        orders.Add(item.OrdersInMonth.ToString());
+    }
+    var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Green)
+        .AddTitle("Number of ReOrdered Stock Items")
+        .AddLegend(title: "Orders In A Month", name: "Vertical")
+        .DataBindCrossTable(dataSource: data, groupByField: "OrdersInMonth", xField: "MonthlyRecord", yFields: "OrdersInMonth")
+        .Write();
+}
