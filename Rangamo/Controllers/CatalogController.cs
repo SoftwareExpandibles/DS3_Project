@@ -14,7 +14,7 @@ namespace Rangamo.Controllers
 {
     public class CatalogController : Controller
     {
-        readonly CatalogHead ch = new CatalogHead();
+        //readonly CatalogHead ch = new CatalogHead();
         private ApplicationDbContext db = new ApplicationDbContext();
         private IRangamoRepository _rangamoRepository;
         public CatalogController()
