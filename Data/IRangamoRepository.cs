@@ -82,7 +82,11 @@ namespace Data
         IEnumerable<MonthlyOrderCounters> GetAllMonthlyOrderCounters();
         void CreateMonthlyOrderCounters(MonthlyOrderCounters drc);
         void UpdateMonthlyOrderCounters(MonthlyOrderCounters drc);
-
+        IEnumerable<Item> GetAllItems();
+        Item ReadItem(int id);
+        void CreateItem(Item item);
+        void DeleteItem(int id);
+        void UpdateItem(Item item);
         void Save();
     }
 }

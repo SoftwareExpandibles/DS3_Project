@@ -359,6 +359,33 @@ namespace Services
             _context.EventOrders.Remove(ord);
         }
 
+        //Items
+        public IEnumerable<Item> GetAllItems()
+        {
+            return (IEnumerable<Item>)_context.Items.ToList();
+        }
+
+        public Item ReadItem(int id)
+        {
+            return (Item)_context.Items.Find(id);
+        }
+
+        public void CreateItem(Item item)
+        {
+            _context.Items.Add(item);
+        }
+
+        public void DeleteItem(int id)
+        {
+            var item = _context.Items.ToList().Find(c => c.ItemId == id);
+            _context.Items.Remove(item);
+        }
+
+        public void UpdateItem(Item item)
+        {
+            _context.Entry(item).State = EntityState.Modified;
+        }
+
         public void Dispose()
        {
             _context.Dispose();
