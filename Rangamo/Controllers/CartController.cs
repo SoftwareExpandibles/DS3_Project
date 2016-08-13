@@ -62,7 +62,8 @@ namespace Rangamo.Controllers
         }
         public ActionResult Buy(int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
+            //ApplicationDbContext db = new ApplicationDbContext();
+           List<Product> pp=_rangamoRepository.GetAllProducts().ToList();
             if (Session["cart"] != null)
             {
                 List<Item> cart = (List<Item>)Session["cart"];
@@ -73,18 +74,70 @@ namespace Rangamo.Controllers
                 }
                 if (index == -1)
                 {
-                    cart.Add(new Item { ItemId = (cart.Count + 1), Product = db.Products.Find(id), Quantity = 1 });
+                    cart.Add(new Item { ItemId = (cart.Count + 1), Product =pp.Find(P=>P.ProductId==id), Quantity = 1 });
                 }
             }
 
             if (Session["cart"] == null)
             {
                 List<Item> cart = new List<Item>();
-                cart.Add(new Item { ItemId = 1, Product = db.Products.Find(id), Quantity = 1 });
+                cart.Add(new Item { ItemId = 1, Product=pp.Find(P=>P.ProductId==id), Quantity = 1 });
                 Session["cart"] = cart;
             }
             
             return View("cart");
+        }
+        public ActionResult CheckOut()
+        {
+            if (Session["cart"] != null)
+            {
+                List<Item> cart = (List<Item>)Session["cart"];
+                try
+                {
+                    Order ooo = new Order();
+                    ooo.CartItems = cart;
+                    ooo.OrderDate = DateTime.Now;
+                    ooo.OrderID = _rangamoRepository.GetAllOrders().Count() + 1;
+                    ooo.AdditionalCost = 0;
+                    ooo.Username = User.Identity.Name;
+                    foreach (Item decs in cart)
+                    {
+                        ooo.SubTotal += decs.Quantity * decs.Product.Price;
+                    }
+                    ooo.Vat = ooo.SubTotal * (Convert.ToDecimal(0.14));
+                    ooo.Total = ooo.Vat + ooo.SubTotal;
+                    List<Order> results = _rangamoRepository.GetAllOrders().ToList().FindAll(p => p.OrderTitle.Contains(ooo.Username + "_OrderNo"));
+                    if (results.Count==0)
+                    {
+                        ooo.OrderTitle=ooo.Username+"_OrderNo"+1;
+                    }
+                    if (results.Count>0)
+                    {
+                        ooo.OrderTitle=ooo.Username+"_OrderNo"+(results.Count()+1).ToString();
+                    }
+                    _rangamoRepository.CreateOrder(ooo);
+                    _rangamoRepository.Save();
+                    Session["order"] = ooo;
+                    return View("CheckOut");
+                }
+                catch (Exception e)
+                {
+
+                    return Content(e.Message);
+                }
+            }
+            return Content("Failed" + "<br/>" + "You Failed");
+        }
+        public ActionResult Shipping()
+        {
+            if (Session["order"] != null)
+            {
+                Order ooo = (Order)Session["order"];
+              Order currentOrder=_rangamoRepository.ReadOrder(ooo.OrderID);
+              return View();
+            }
+            return Content("Unsuccessful order does not exist");
+            
         }
         public ActionResult Delete(int id)
         {
@@ -98,39 +151,19 @@ namespace Rangamo.Controllers
             Session["cart"] = cart;
             return View("cart");
         }
-        public ActionResult CheckOut()
+        public int BisExisting(int id)
         {
-            Order ooo = new Order();
-            List<Item> cart = (List<Item>)Session["Cart"];
-            if (cart != null)
-            {
-                foreach (Item cad in cart)
-                {
-                    ooo.SubTotal += (cad.Quantity * cad.Product.Price);
-                }
-            }
-            ooo.OrderID = _rangamoRepository.GetAllOrders().Count() + 1;
-            ooo.CartItems = cart;
-            ooo.Username = "";
-            ooo.OrderTitle = "Order" + ooo.OrderID.ToString();
-            ooo.AdditionalCost = 0;
-            ooo.Vat = (ooo.SubTotal+ooo.AdditionalCost) * Convert.ToDecimal(0.14);
-            ooo.Total = ooo.SubTotal + ooo.Vat;
-            _rangamoRepository.CreateOrder(ooo);
-            _rangamoRepository.Save();
-            //db.Orders.Add(ooo);
-            //db.SaveChanges();
-            Session["Order"] = ooo;
-            return View("CheckOut");
-        }
-        private int BisExisting(int id)
-        {
-            List<Item> cart = (List<Item>)Session["cart"];
+            List<Item> cart =(List<Item>)Session["cart"];
             for (int i = 0; i < cart.Count; i++)
                 if (cart[i].Product.ProductId == id)
                     return i;
             return -1;
         }
+       
+        
+        
+}
+}
         //public ActionResult Successful()
         //{
         //    int syaOrders = 0;
@@ -408,5 +441,3 @@ namespace Rangamo.Controllers
         ////    }
         ////}
 
-	}
-}

@@ -14,6 +14,7 @@ namespace Rangamo.Controllers
 {
     public class HomeController : Controller
     {
+        //readonly CatalogHead ch = new CatalogHead();
         private ApplicationDbContext db = new ApplicationDbContext();
         private IRangamoRepository _rangamoRepository;
         // GET: Products
@@ -42,22 +43,22 @@ namespace Rangamo.Controllers
         }
         public ActionResult AcceptedRestock()
         {
-            ViewBag.View = _rangamoRepository.GetAllDailyReOrderCounters().ToList();
+            ViewBag.View = _rangamoRepository.GetAllDailyReOrderCounters();
             return View();
         }
         public ActionResult ProcessedOrders()
         {
-            ViewBag.View = _rangamoRepository.GetAllDailyOrderCounters().ToList();
+            ViewBag.View = _rangamoRepository.GetAllDailyOrderCounters();
             return View();
         }
         public ActionResult MonthlyReOrders()
         {
-            ViewBag.View = _rangamoRepository.GetAllMonthlyReOrderCounters().ToList();
+            ViewBag.View = _rangamoRepository.GetAllMonthlyReOrderCounters();
             return View();
         }
         public ActionResult MonthlyOrders()
         {
-            ViewBag.View = _rangamoRepository.GetAllMonthlyOrderCounters().ToList();
+            ViewBag.View = _rangamoRepository.GetAllMonthlyOrderCounters();
             return View();
         }
     }
