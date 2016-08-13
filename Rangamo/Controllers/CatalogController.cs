@@ -13,11 +13,15 @@ namespace Rangamo.Controllers
 {
     public class CatalogController : Controller
     {
-        public ApplicationDbContext db = new ApplicationDbContext();
-        // GET: /Catalog/
+        private ApplicationDbContext db = new ApplicationDbContext();
+        private IRangamoRepository _rangamoRepository;
+        public CatalogController()
+        {
+            this._rangamoRepository = new RangamoRepository(new ApplicationDbContext());
+        }
         public ActionResult Index()
         {
-            ViewBag.Productlist = db.Products.ToList();
+            ViewBag.Productlist = _rangamoRepository.GetAllProducts();
             return View();
         }
         public ActionResult Catagories()

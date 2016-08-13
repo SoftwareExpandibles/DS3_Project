@@ -5,89 +5,49 @@
     ViewBag.Title = "Index";
 }
 
-@*<h2>Index</h2>
+@foreach (Product product in ViewBag.ProductList)
+{
+    <div class="col-sm-4">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                    <a href="@Url.Action("Details", "Catalog", new { id = product.ProductId })">
+                        <img src="/Products/RetrieveImage/@product.ProductId" alt="" height=150 width=150 class="thumbnail" />
+                    </a>
+                    <h2><strong>@product.Title</strong></h2>
+                    <p>@product.Price.ToString("R0.00")</p>
+                    <p>
 
-<div>
-    <table cellpadding="2" cellspacing="2" border="1">
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Category
-            </th>
-            <th>
-                Color
-            </th>
-            <th>
-                Size
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-                Photo
-            </th>
-        </tr>
-        @foreach (Product product in ViewBag.ProductList)
-        {
-            <tr>
-                <td>@product.Title</td>
-                <td>@product.Genre.Category
-                </td>
-                <td>@product.Color</td>
-                <td>@product.Size.ActualSize
-                </td>
-                <td>R @product.Price</td>
-                <td>
-                    <img src="@Url.Content("~/Content")/Images/@product.Photo "
-                         width="120" height="100" class="glyphicon-picture" />
-                    <input type="hidden" class="productId" value="@product.productId" />
-                    <div class="caption">
-                        <h3>
-                            <strong>@product.Title</strong>
-                        </h3>
-                        <p>R @product.Price</p>
-                        <p>
-                            <a href="@Url.Action("Buy", "Cart", new { id = product.productId })" class="btn btn-primary" role="button">Add to Cart</a>
-                        </p>
-                    </div>
-</td>
-               
+                        <ul class="nav nav-pills nav-justified">
 
+                            @*<li><a href="@Url.Action("Buy", "Cart", new { id = product.productId })"><i class="glyphicon glyphicon-shopping-cart"></i>Add to cart</a></li>
+                            <li><a href="@Url.Action("addWishList", "wishList", new { id = product.productId })"><i class="glyphicon glyphicon-heart"></i>Add to wishlist</a></li>*@
 
-</tr>
-        }
-    </table>
-</div>
-
-<div>*@
-
-    <h2 class="title text-center">Features Items</h2><br />
-
-    @foreach (Product product in ViewBag.ProductList)
-    {
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <a href="@Url.Action("Details", "Catalog", new { id = product.ProductId })">
-                            <img src="@Url.Content("~/Content")/images/@product.Photo" width="200" height="300" class="glyphicon-picture" alt="Product" />
-                        </a>
-                        <h2><strong>@product.Title</strong></h2>
-                        <p>@product.Price.ToString("R0.00")</p>
-                        <p>
-
-                            <ul class="nav nav-pills nav-justified">
-
-                                <li><a href="@Url.Action("Buy", "Cart", new { id = product.ProductId })"><i class="glyphicon glyphicon-shopping-cart"></i>Add to cart</a></li>
-                                @*<li><a href="@Url.Action("addWishList", "wishList", new { id = product.productId })"><i class="glyphicon glyphicon-heart"></i>Add to wishlist</a></li>*@
-
-                            </ul>
-                        </p>
-                    </div><br /><br />
-                </div>
+                        </ul>
+                    </p>
+                </div><br /><br />
             </div>
         </div>
+    </div>
 
-    }
+}
+
+
+
+<div class="special">
+    <div class="container">
+        <h3>Special Offers</h3>
+        <div class="specia-top">
+            <ul class="grid_2">
+                <li>
+                    <a href="details.html"><img src="images/8.jpg" class="img-responsive" alt=""></a>
+                    <div class="special-info grid_1 simpleCart_shelfItem">
+                        <h5>Lorem ipsum dolor</h5>
+                        <div class="item_add"><span class="item_price"><h6>ONLY $40.00</h6></span></div>
+                        <div class="item_add"><span class="item_price"><a href="#">add to cart</a></span></div>
+                    </div>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
