@@ -88,7 +88,7 @@ namespace Rangamo.Controllers
             }
             ooo.OrderID = _rangamoRepository.GetAllOrders().Count() + 1;
             ooo.CartItems = cart;
-            ooo.Username=
+            ooo.Username = "";
             ooo.OrderTitle = "Order" + ooo.OrderID.ToString();
             ooo.AdditionalCost = 0;
             ooo.Vat = (ooo.SubTotal+ooo.AdditionalCost) * Convert.ToDecimal(0.14);
