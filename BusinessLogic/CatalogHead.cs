@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class CatalogHead
+    public class CatalogHead
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
         private IRangamoRepository _rangamoRepository;
         public CatalogHead()
         {
@@ -23,11 +23,10 @@ namespace BusinessLogic
             List<Product> ap = new List<Product>();
             foreach (Product item in _rangamoRepository.GetAllProducts())
             {
-                var result = _rangamoRepository.ReadInventory(item.ProductId);
-               // var result = db.InventoryItems.ToList().Find(p => p.ProductId == item.ProductId);
-                if (result != null)
+                var inv = db.Inventories.ToList().Find(p => p.ProductId == item.ProductId);
+                if (inv!=null)
                 {
-                    if (result.StockOnHand > 25)
+                    if (inv.StockOnHand>25)
                     {
                         ap.Add(item);
                     }
@@ -40,7 +39,7 @@ namespace BusinessLogic
             List<ReOrderRequest> ror = new List<ReOrderRequest>();
             foreach (ReOrderRequest item in _rangamoRepository.GetAllReOrders().ToList())
             {
-                if (item.Approval==true)
+                if (item.Approval == true)
                 {
                     ror.Add(item);
                 }

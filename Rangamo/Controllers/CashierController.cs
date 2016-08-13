@@ -71,7 +71,7 @@ namespace Rangamo.Controllers
             if (cash < total)
             {
                 ViewBag.Change = "";
-                ViewBag.Error1 = "Please pay R" + total + " or more.";
+                ViewBag.Error1 = "Please pay R" + total + " .";
             }
 
             return View(list);

@@ -62,6 +62,7 @@ namespace Data.Models
         public DbSet<MonthlyOrderCounters> MonthlyOrderCounter { get; set; }
         public DbSet<MonthlyReOrderCounters> MonthlyReOrderCounter { get; set; }
         public DbSet<OrderStatus> OrderStatus { get; set; }
+        public System.Data.Entity.DbSet<Rating> Rating { get; set; }
         public System.Collections.IEnumerable Sms { get; set; }
     }
 }

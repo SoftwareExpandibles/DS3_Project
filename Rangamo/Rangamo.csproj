@@ -202,11 +202,14 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SizesController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Controllers\WshListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -449,6 +452,8 @@
     <Content Include="Content\designer\js\pace.js" />
     <Content Include="Content\designer\js\raphael-2.1.0.min.js" />
     <Content Include="Content\designer\js\siminta.js" />
+    <Content Include="Photos\Photo\EmptyStar.jpg" />
+    <Content Include="Photos\Photo\FilledStar.jpeg" />
     <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\10.jpg" />
     <Content Include="Content\images\11.jpg" />
@@ -475,6 +480,7 @@
     <Content Include="Content\images\dress.jpg" />
     <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\gift.jpg" />
+    <Content Include="Content\images\hand.jpg" />
     <Content Include="Content\images\img-sprite.png" />
     <Content Include="Content\images\line.png" />
     <Content Include="Content\images\login.jpg" />
@@ -508,6 +514,7 @@
     <Content Include="Content\js\menu_jquery.js" />
     <Content Include="Content\js\simpleCart.min.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Photos\Photo\star_half_full.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -544,6 +551,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4a2.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -645,10 +653,13 @@
     <Content Include="Views\Applicants\MyApplication.cshtml" />
     <Content Include="Views\Applicants\Create.cshtml" />
     <Content Include="Views\Cashier\Index.cshtml" />
+    <Content Include="Views\WshList\Index.cshtml" />
+    <Content Include="Views\Cart\CheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Rating\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

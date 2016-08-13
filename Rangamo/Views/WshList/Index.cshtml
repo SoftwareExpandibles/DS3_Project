@@ -1,0 +1,72 @@
+﻿@model Rangamo.Models.Product
+@using Rangamo.Models;
+
+@{
+    ViewBag.Title = "WishList";
+}
+
+<h2>Your Wishlist</h2>
+
+
+<table cellpadding="2" cellspacing="2" border="1" title="Wish list" style="font-size:large">
+    <tr style="background-color:chocolate">
+
+        <th>Id</th>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Size</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+        <th>Optional</th>
+
+    </tr>
+    @if (Session.Count > -1)
+    {
+        double s = 0;
+        try
+        {
+            foreach (Item item in (List<Item>)Session["wishlist"])
+            {
+                s += (Convert.ToDouble(item.Product.Price)) * (Convert.ToDouble(item.Quantity));
+                <tr>
+                    <td>@item.ItemId</td>
+                    <td>@item.Product.Title</td>
+                    <td>@item.Product.Color</td>
+                    <td>@item.Product.Size.ActualSize</td>
+                    <td>
+                        <img src="@Url.Content("~/Content")/Images/@item.Product.Photo"
+                             width="120" height="100" class="glyphicon-picture" />
+                        <input type="hidden" class="productId" value="@item.Product.ProductId" />
+                    </td>
+                    <td>R @item.Product.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>R @(item.Product.Price * item.Quantity)</td>
+                    <td>@Html.ActionLink("Remove Item", "Delete", "WshList", new { id = item.Product.ProductId }, null)</td>
+                </tr>
+            }
+        }
+
+        catch (Exception)
+        {
+            <tr><td><strong style="color:red">NO ITEMS TO DISPLAY</strong> </td></tr>
+        }
+        <tr>
+            <th align="right" colspan="5">Sum</th>
+            <td>@s.ToString("R0.00")</td>
+        </tr>
+    }
+
+    @if (Session.Count == -1)
+    {
+        @Html.Display(Session["wishlist"].ToString());
+    }
+
+</table>
+
+
+<p>
+    <br /><br />
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</p>
