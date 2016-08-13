@@ -32,7 +32,7 @@ namespace Rangamo.Controllers
         public byte[] GetImageFromDataBase(int id)
         {
             byte[] cover;
-            var repo = db.Products.ToList();
+            var repo = _rangamoRepository.GetAllProducts();
             var q = from temp in repo where temp.ProductId == id select temp.Photo;
             cover = q.First();
             return cover;
