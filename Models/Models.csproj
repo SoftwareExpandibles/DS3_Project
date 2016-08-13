@@ -124,7 +124,9 @@
     <Compile Include="DailyOrderCounters.cs" />
     <Compile Include="DailyReOrderCounters.cs" />
     <Compile Include="Delivery.cs" />
+    <Compile Include="EmailReply.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="EventOrder.cs" />
     <Compile Include="Feedback.cs" />
     <Compile Include="File.cs" />
     <Compile Include="FileType.cs" />

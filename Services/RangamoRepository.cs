@@ -348,6 +348,17 @@ namespace Services
         {
             _context.Entry(drc).State = EntityState.Modified;
         }
+        public void createEventOrder(EventOrder ord)
+        {
+            _context.EventOrders.Add(ord);
+        }
+
+        public void DeleteEventOrder(int id)
+        {
+            var ord = _context.EventOrders.ToList().Find(s => s.orderID == id);
+            _context.EventOrders.Remove(ord);
+        }
+
         public void Dispose()
        {
             _context.Dispose();
