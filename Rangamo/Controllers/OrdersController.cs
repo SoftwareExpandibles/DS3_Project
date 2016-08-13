@@ -6,129 +6,113 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Data;
 using Data.Models;
 using Models;
-using Services;
 
 namespace Rangamo.Controllers
 {
-    public class InventoriesController : Controller
+    public class OrdersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private IRangamoRepository _rangamoRepository;
-        // GET: Products
-        public InventoriesController()
-        {
-            this._rangamoRepository = new RangamoRepository(new ApplicationDbContext());
-        }
-        public List<Inventory> pop()
-        {
-            return (List<Inventory>)_rangamoRepository.GetInventory();
-        }
-        // GET: Inventories
+
+        // GET: Orders
         public ActionResult Index()
         {
-            var inventories = _rangamoRepository.GetInventory();
-            return View(inventories.ToList());
+            return View(db.Orders.ToList());
         }
 
-        // GET: Inventories/Details/5
+        // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            return View(inventory);
+            return View(order);
         }
 
-        // GET: Inventories/Create
+        // GET: Orders/Create
         public ActionResult Create()
         {
-            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Title");
             return View();
         }
 
-        // POST: Inventories/Create
+        // POST: Orders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "InventoryID,ProductId,StockOnHand,ReOrderQuantity")] Inventory inventory)
+        public ActionResult Create([Bind(Include = "OrderID,Username,OrderDate,OrderTitle,SubTotal,AdditionalCost,Vat,Total")] Order order)
         {
             if (ModelState.IsValid)
             {
-                db.Inventories.Add(inventory);
+                db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductId = new SelectList(_rangamoRepository.GetAllProducts(), "ProductId", "Title", inventory.ProductId);
-            return View(inventory);
+            return View(order);
         }
 
-        // GET: Inventories/Edit/5
+        // GET: Orders/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductId = new SelectList(_rangamoRepository.GetAllProducts(), "ProductId", "Title", inventory.ProductId);
-            return View(inventory);
+            return View(order);
         }
 
-        // POST: Inventories/Edit/5
+        // POST: Orders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "InventoryID,ProductId,StockOnHand,ReOrderQuantity")] Inventory inventory)
+        public ActionResult Edit([Bind(Include = "OrderID,Username,OrderDate,OrderTitle,SubTotal,AdditionalCost,Vat,Total")] Order order)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(inventory).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(order).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductId = new SelectList(_rangamoRepository.GetAllProducts(), "ProductId", "Title", inventory.ProductId);
-            return View(inventory);
+            return View(order);
         }
 
-        // GET: Inventories/Delete/5
+        // GET: Orders/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            return View(inventory);
+            return View(order);
         }
 
-        // POST: Inventories/Delete/5
+        // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Inventory inventory = db.Inventories.Find(id);
-            _rangamoRepository.DeleteInventory(id);
-            _rangamoRepository.Save();
+            Order order = db.Orders.Find(id);
+            db.Orders.Remove(order);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

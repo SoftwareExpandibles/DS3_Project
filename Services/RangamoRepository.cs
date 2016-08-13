@@ -145,13 +145,14 @@ namespace Services
 
        public IEnumerable<Inventory> GetInventory()
        {
-           var inventories = _context.Inventories.Include(i => i.Product);
-           return (IEnumerable<Inventory>) _context.Inventories.ToList();
+           var inventories = _context.Inventories;
+           return (IEnumerable<Inventory>)_context.Inventories.ToList();
+          
        }
 
        public Inventory ReadInventory(int id)
        {
-           return (Inventory) _context.Inventories.Find(id);
+           return (Inventory) _context.Inventories.ToList().Find(p =>p.ProductId == id);
        }
 
        public void CreateInventory(Inventory inventory)

@@ -8,11 +8,10 @@ namespace Rangamo.Controllers
 {
     public class RatingController : Controller
     {
-        //
-        // GET: /Rating/
+        // GET: Rating
         public ActionResult Index()
         {
             return View();
         }
-	}
+    }
 }

@@ -1,4 +1,4 @@
-﻿@model Models.Product
+﻿@model IEnumerable<Models.Product>
 @using Models;
 
 @{
@@ -55,9 +55,7 @@
                     <td>@item.Product.Color</td>
                     <td>@item.Product.Size.ActualSize</td>
                     <td>
-                        <img src="@Url.Content("~/Content")/images/@item.Product.Photo"
-                             width="120" height="100" class="glyphicon-picture" />
-                        <input type="hidden" class="ProductId" value="@item.Product.ProductId" />
+                        <img src="/Cart/RetrieveImage/@item.ProductId" alt="" height=150 width=150 class="thumbnail" />
                     </td>
                     <td>R @item.Product.Price</td>
                     <td>@item.Quantity</td>
@@ -84,7 +82,7 @@
     </tr>
 </table>
 <p style="text-align:center">
-    @Html.ActionLink("Continue Shopping", "Index", "Home")
+    @Html.ActionLink("Continue Shopping", "Index", "Catalog")
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     @Html.ActionLink("Check Out", "CheckOut", "Cart")
 </p>

@@ -17,11 +17,33 @@ namespace Rangamo.Controllers
     public class CartController : Controller
     {
         private IRangamoRepository _rangamoRepository;
+        ApplicationDbContext db = new ApplicationDbContext();
 
          public CartController()
         {
             this._rangamoRepository = new RangamoRepository(new ApplicationDbContext());
         }
+         public byte[] GetImageFromDataBase(int id)
+         {
+             byte[] cover;
+             var repo =_rangamoRepository.GetAllProducts().ToList();
+             var q = from temp in repo where temp.ProductId == id select temp.Photo;
+             cover = q.First();
+             return cover;
+         }
+
+         public ActionResult RetrieveImage(int id)
+         {
+             byte[] cover = GetImageFromDataBase(id);
+             if (cover != null)
+             {
+                 return File(cover, "image/jpg");
+             }
+             else
+             {
+                 return null;
+             }
+         }
         //[Authorize]
         //
         // GET: /Cart/
@@ -61,6 +83,7 @@ namespace Rangamo.Controllers
                 cart.Add(new Item { ItemId = 1, Product = db.Products.Find(id), Quantity = 1 });
                 Session["cart"] = cart;
             }
+            
             return View("cart");
         }
         public ActionResult Delete(int id)
@@ -98,7 +121,7 @@ namespace Rangamo.Controllers
             //db.Orders.Add(ooo);
             //db.SaveChanges();
             Session["Order"] = ooo;
-            return View("CheckOut1");
+            return View("CheckOut");
         }
         private int BisExisting(int id)
         {
